@@ -1,5 +1,85 @@
 <template>
-  <div>
+  <div><div class="solve" id="solve4-1">
+    <div class="solve-title">
+      <p class ="solve-title-p" >统计停靠路线最多的站点（按照id统计）并排序，显示前15条。</p></div>
+    <div class="set-routeName">
+      <button type = "button"  class = "search-button" v-on:click="getStationDESCOrderByStopRouteNum()"> 查询 </button>
+    </div>
+    <div style="height:300px; width:100% ; background-color: white">
+
+      <el-scrollbar style="height:100%; width: 100%">
+        <ul class="result-ul">
+          <li class="result-li" v-for="(item,index) in relatedStation15max" :key="index">
+            <RouteItem6 class="route-item" :stationInfo="item" :index="index"></RouteItem6>
+          </li>
+        </ul>
+      </el-scrollbar>
+    </div>
+  </div>
+    <div class="solve" id="solve4-2">
+      <div class="solve-title">
+        <p class ="solve-title-p" >查询地铁站点数，始发站点数，终点站点数，单行站点数</p></div>
+      <div class="set-routeName">
+        <button type = "button"  class = "search-button" v-on:click="getStationTypeNum()"> 查询 </button>
+      </div>
+      <div style="height:300px; width:80% ; background-color: white">
+
+        <el-scrollbar style="height:100%; width: 100%">
+          <ul class="result-ul">
+            <li class="result-li" v-for="(item,index) in stationNum" :key="index">
+              <RouteItem7 class="route-item" :NumInfo="item" :index="index"></RouteItem7>
+            </li>
+          </ul>
+        </el-scrollbar>
+      </div>
+    </div>
+
+    <div class="solve" id="solve4-3">
+      <div class="solve-title">
+        <p class ="solve-title-p" >得到line类型统计</p></div>
+      <div class="set-routeName">
+        <button type = "button"  class = "search-button" v-on:click="getLineTypeNum()"> 查询 </button>
+      </div>
+      <div style="height:300px; width:80% ; background-color: white">
+
+        <el-scrollbar style="height:100%; width: 100%">
+          <ul class="result-ul">
+            <li class="result-li" v-for="(item,index) in lineType" :key="index">
+              <RouteItem8 class="route-item" :NumInfo="item" :index="index"></RouteItem8>
+            </li>
+          </ul>
+        </el-scrollbar>
+      </div>
+    </div>
+
+    <div class="solve" id="solve4-4">
+      <div class="solve-title">
+        <p class ="solve-title-p" >得到两条路线重复的站点</p></div>
+      <div class="set-routeName">
+        <div class="set-routeName-p">
+          <span>线路名称（routeName）</span>
+        </div>
+        <div class="set-routeName-default">
+          <input class="set-routeName-default-input" type="text" placeholder="请填写线路名称" v-model="routeName3">
+        </div>
+        <div class="set-routeName-default">
+          <input class="set-routeName-default-input" type="text" placeholder="请填写线路名称" v-model="routeName4">
+        </div>
+        <button type = "button"  class = "search-button" v-on:click="getRouteSameStation()"> 查询 </button>
+      </div>
+      <div style="height:300px; width:80% ; background-color: white">
+
+        <el-scrollbar style="height:100%; width: 100%">
+          <ul class="result-ul">
+            <li class="result-li" v-for="(item,index) in stationInfo" :key="index">
+              <RouteItem9 class="route-item" :stationInfo="item" :index="index"></RouteItem9>
+            </li>
+          </ul>
+        </el-scrollbar>
+      </div>
+    </div>
+
+
   <div class="solve" id="solve4-5">
     <div class="solve-title">
     <p class ="solve-title-p" >查询某线路⼀共有多少条可以换乘的线路</p></div>
@@ -115,11 +195,14 @@
       </div>
     </div>
 
-
   </div>
 </template>
 
 <script>
+import RouteItem6 from "@/components/RouteItem4-1";
+import RouteItem7 from "@/components/RouteItem4-2";
+import RouteItem8 from "@/components/RouteItem4-3";
+import RouteItem9 from "@/components/RouteItem4-4";
 import RouteItem1 from "@/components/RouteItem4-5";
 import RouteItem2 from "@/components/RouteItem4-6";
 import RouteItem3 from "@/components/RouteItem4-7";
@@ -133,9 +216,17 @@ export default {
     RouteItem3,
     RouteItem4,
     RouteItem5,
+    RouteItem6,
+    RouteItem7,
+    RouteItem8,
+    RouteItem9
   },
   data() {
     return {
+      relatedStation15max:null,
+      stationNum:null,
+      lineType:null,
+      stationInfo:null,
       relatedRoutes: null,
       relatedRoutes15max: null,
       stationsWithMaxRoutesBetween:null,
@@ -143,11 +234,60 @@ export default {
       routesWithMaxRunTime:null,
       routeName: "",
       routeName2: "",
+      routeName3: "",
+      routeName4: "",
       nonrepeatingResult:null
     }
   },
 
   methods: {
+  getStationDESCOrderByStopRouteNum(){
+    this.$axios.get('http://localhost:8081/RouteEntry/getStationDESCOrderByStopRouteNum',{
+      headers: {   //设置上传请求头
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
+      console.log(res.data.result);
+      this.relatedStation15max = res.data.result;
+
+    })
+  },
+    getStationTypeNum(){
+      this.$axios.get('http://localhost:8081/RouteEntry/getStationTypeNum',{
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => {
+        console.log(res.data.result);
+        this.stationNum = res.data.result;
+
+      })
+    },
+     getLineTypeNum(){
+      this.$axios.get('http://localhost:8081/RouteEntry/getLineTypeNum',{
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => {
+        console.log(res.data.result);
+        this.lineType = res.data.result;
+
+      })
+    },
+    getRouteSameStation(){
+      console.log(this.routeName)
+      this.$axios.get('http://localhost:8081/RouteEntry/getRouteSameStation?routeAName=' + this.routeName3+'&routeBName='+this.routeName4,{
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => {
+        console.log(res);
+        console.log(res.data.result[0].num);
+        this.stationInfo = res.data.result[1].stationList;
+
+      })
+
+    },
     queryRoutesRelated(){
       console.log(this.routeName)
       this.$axios.get('http://localhost:8081/RouteEntry/related_routes?routeName=' + this.routeName,{
