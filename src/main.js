@@ -6,6 +6,8 @@ import axios from 'axios'
 import VueRouter from 'vue-router';
 import Router from 'vue-router';
 import RouteAnalyze from "@/components/RouteAnalyze";
+import RouteChange from "@/components/RouteChange";
+
 
 Vue.use(ElementUI)
 Vue.use(VueRouter);
@@ -21,11 +23,14 @@ const routers = [
     path: '/route_analyze',
     name: 'RouteAnalyze',
     component: RouteAnalyze
+  },{
+    path: '/route_change',
+    name: 'RouteChange',
+    component: RouteChange
   },]
 const router = new VueRouter({
   routes: routers
 })
-
 
 new Vue({
   render: h => h(App),

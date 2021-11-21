@@ -9,6 +9,9 @@
         <div class="nav-next" v-on:click="routeAnalyze()" v-if="analysis_unfold">
           <p :class='{nav_p: !route_analysis_click,nav_p_click: route_analysis_click}'>统计线路信息</p>
         </div>
+        <div class="nav-next" v-on:click="routeChange()" v-if="analysis_unfold">
+          <p :class='{nav_p: !route_change_click,nav_p_click: route_change_click}'>更改线路信息</p>
+        </div>
       </div>
 
     </nav>
@@ -23,6 +26,7 @@ export default {
       analysis_unfold: false,
       station_analysis_click: false,
       route_analysis_click: false,
+      route_change_click:false
     }
   },
   methods: {
@@ -32,16 +36,27 @@ export default {
     stationAnalyze(){
       this.station_analysis_click = true;
       this.route_analysis_click = false;
+      this.route_change_click = false;
 
     },
     routeAnalyze(){
       this.route_analysis_click = true;
       this.station_analysis_click = false;
+      this.route_change_click = false;
       this.$router.push({
         name: 'RouteAnalyze',
       })
 
     },
+    routeChange(){
+      this.route_change_click = true;
+      this.route_analysis_click = false;
+      this.station_analysis_click = false;
+      this.$router.push({
+        name: 'RouteChange',
+      })
+
+    }
 
   },
 }
