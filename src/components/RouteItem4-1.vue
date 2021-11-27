@@ -5,15 +5,19 @@
       </div>
 
       <div class="table-element">
-        <span>n:{{stationInfo.num}}</span>
+        <span>{{stationInfo.num}}</span>
       </div>
 
       <div class="table-element2">
         <span>{{stationInfo.station.name}}</span>
       </div>
 
+      <div class="table-element2">
+        <span>{{stationInfo.station.stationId}}</span>
+      </div>
+
       <div class="table-element3">
-        <span>route:{{stationInfo.routeName}}</span>
+        <span>{{stationInfo.routeName}}</span>
       </div>
 
     </div>
@@ -49,7 +53,7 @@ name: "RouteItem6",
 }
 .table-element2{
   padding:10px;
-  width: 70px;
+  width: 80px;
   height: 55px;
   border:solid;
 }
