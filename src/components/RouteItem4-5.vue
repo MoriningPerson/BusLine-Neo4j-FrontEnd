@@ -1,19 +1,19 @@
 <template>
   <div class="item-container">
     <div class="table-element">
-      <span>{{index+1}}</span>
+      <span>{{ index + 1 }}</span>
     </div>
     <div class="table-element">
       <span>RouteName:</span>
     </div>
     <div class="table-element">
-      <span>{{routeInfo.name}}</span>
+      <span>{{ routeInfo.name }}</span>
     </div>
     <div class="table-element">
       <span>RouteId:</span>
     </div>
     <div class="table-element">
-      <span>{{routeInfo.routeId}}</span>
+      <span>{{ routeInfo.routeId }}</span>
     </div>
 
   </div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-name: "RouteItem1",
+  name: "RouteItem1",
   props: {
     routeInfo: {
       type: Object
@@ -35,13 +35,14 @@ name: "RouteItem1",
 </script>
 
 <style scoped>
-.item-container{
+.item-container {
   display: flex;
 }
-.table-element{
-  padding:10px;
+
+.table-element {
+  padding: 10px;
   width: 300px;
   height: 30px;
-  border:solid;
+  border: solid;
 }
 </style>

@@ -1,16 +1,16 @@
 <template>
   <div class="item-container">
     <div class="table-element">
-      <span>{{index+1}}</span>
+      <span>{{ index + 1 }}</span>
     </div>
     <div class="table-element">
-      <span>{{stationInfo.stationId}}</span>
+      <span>{{ stationInfo.stationId }}</span>
     </div>
     <div class="table-element">
-      <span>{{stationInfo.name}}</span>
+      <span>{{ stationInfo.name }}</span>
     </div>
     <div class="table-element">
-      <span>{{stationInfo.english}}</span>
+      <span>{{ stationInfo.english }}</span>
     </div>
   </div>
 </template>
@@ -31,13 +31,14 @@ export default {
 </script>
 
 <style scoped>
-.item-container{
+.item-container {
   display: flex;
 }
-.table-element{
-  padding:10px;
+
+.table-element {
+  padding: 10px;
   width: 300px;
   height: 30px;
-  border:solid;
+  border: solid;
 }
 </style>
