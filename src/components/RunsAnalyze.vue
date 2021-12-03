@@ -4,15 +4,20 @@
     <div id="solve3-1" class="solve">
       <div class="solve-title">
         <p class="solve-title-p">获得某条线路某个方向的全部班次信息</p></div>
-      <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>线路名称（routeName）</span>
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="routeName" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
-        </div>
-        <button class="search-button" type="button" v-on:click="queryRouteRuns()"> 查询</button>
-      </div>
+        <el-row>
+          <el-col span="12">
+            <input v-model="routeName" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
+          </el-col>
+          <el-col span="12">
+              <el-col>
+                <button class="search-button" type="button" v-on:click="queryRouteRuns()"> 查询</button>
+              </el-col>
+          </el-col>
+        </el-row>
+      <br>
+
+
+
       <div style="height:300px; width:80% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
@@ -98,55 +103,92 @@ ul {
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
-
+.button-set{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: start;
+  margin-inside: 25px;
+  margin-right:10px;
+  letter-spacing: 10px;
+}
+.text-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #CC9999;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  align-items: start;
+}
+.title-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: bold;
+  color: #CC9999;
+  alignment: left;
+  text-align: start;
+}
 .solve {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #FEF4F4;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
+
 }
 
 .solve-title {
   text-align: left;
-  color: black;
+  color: #CC9999;
   font-size: 17px;
 }
 
 .set-routeName {
   margin-top: 30px;
-  margin-bottom: 30px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
-
-.set-routeName-p {
-  color: black;
-  padding-top: 10px;
-  margin-right: 30px;
-}
-
 input {
   outline: none;
   border: none;
 }
 
 .set-routeName-default-input {
-  color: rgb(120, 120, 120);
+  color: #CC9999;
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #FFCCCC;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
+  text-align: center;
+
+  width: 100px;
+  height: 35px;
   margin-top: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .el-scrollbar__wrap {
@@ -156,5 +198,13 @@ input {
 .result {
   margin: 20px;
   text-align: left;
+}
+.box-card {
+  padding-top: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top:30px;
+  alignment: center;
+  background-color: #FEF4F4;
 }
 </style>

@@ -604,24 +604,24 @@ export default {
     },
     // 2.5.2
     handleSelect252_1(val) {
-      this.staionName252_1 = val;
+      this.stationName252_1=val.value;
     },
     handleSelect252_2(val) {
-      this.staionName252_2 = val;
+      this.stationName252_2 = val.value;
     },
     // 2.5.4
     handleSelect254_1(val) {
-      this.staionName254_1 = val;
+      this.stationName254_1 = val.value;
     },
     handleSelect254_2(val) {
-      this.staionName254_2 = val;
+      this.stationName254_2 = val.value;
     },
     // 2.5.6
     handleSelect256_1(val) {
-      this.staionName256_1 = val;
+      this.stationName256_1 = val.value;
     },
     handleSelect256_2(val) {
-      this.staionName256_2 = val;
+      this.stationName256_2 = val.value;
     },
 
     // 2.5.1 普通最短路 (根据id)

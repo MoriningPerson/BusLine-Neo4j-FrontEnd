@@ -5,21 +5,31 @@
       <div class="solve-title">
         <p class="title-wrapper"><i class="iconfont">&#xe623;</i>&nbsp;&nbsp;沿途一览</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-default">
-          <input v-model="stationName241" class="set-routeName-default-input" placeholder="请填写站点1的名称" type="text">
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="stationName242" class="set-routeName-default-input" placeholder="请填写站点2的名称" type="text">
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="busPartialName" class="set-routeName-default-input" placeholder="请填写线路的部分名称" type="text">
-        </div>
+        <el-row>
+          <el-col span="8">
+            <div class="set-routeName-default">
+              <input v-model="stationName241" class="set-routeName-default-input" placeholder="请填写站点1的名称" type="text">
+            </div>
+          </el-col>
+          <el-col span="8">
+            <div class="set-routeName-default">
+              <input v-model="stationName242" class="set-routeName-default-input" placeholder="请填写站点2的名称" type="text">
+            </div>
+          </el-col>
+          <el-col span="8">
+            <div class="set-routeName-default">
+              <input v-model="busPartialName" class="set-routeName-default-input" placeholder="请填写线路的部分名称" type="text">
+            </div>
+          </el-col>
+        </el-row>
+
       </div>
       <div class="button-set">
         <button class="search-button" type="button" @click="getBusDirection()"> <i class="iconfont">&#xe602;</i>方向</button>
         <button class="search-button" type="button" @click="alongStationsBetween()"> <i class="iconfont">&#xe600;</i>沿途</button>
         <button class="search-button" type="button" @click="timeCost()"> <i class="iconfont">&#xe74f;</i>时长</button>
       </div>
+      <br>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe602;</i>&nbsp;线路运行方向：<br><br>&nbsp;{{ this.busWholeName }}</div></div>

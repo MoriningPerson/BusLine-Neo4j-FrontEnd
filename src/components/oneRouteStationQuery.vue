@@ -15,9 +15,7 @@
                            :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写公交名称"
                            @input="searchFullRouteName" @select="handleSelectRouteName"></el-autocomplete>
         </div>
-        &nbsp;&nbsp;
         <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;
         <button class="search-button" type="button" @click="getStationByRoutePartialName()"> <i class="iconfont">&#xe638;</i>
         </button>
       </div>
@@ -68,7 +66,7 @@ export default {
 
   data() {
     return {
-      oneRouteAllStationInfo: null,
+      oneRouteAllStationInfo: [],
       inputRouteName:"",
       inputRouteNameArr:[],
     }
@@ -93,12 +91,14 @@ export default {
       }).then(function (res) {
         if (res.data.code == 200) {
           console.log(res.data.result);
-          // el-autocomplete元素 要求 数组内是对象 且有 value 属性
+          //el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
-            var obj = {value: ""};
+            let obj = {};
             obj.value = res.data.result[j];
             _this.inputRouteNameArr.push(obj);
+            console.log(obj);
           }
+
         }
       })
     },
@@ -109,7 +109,7 @@ export default {
     },
     // 2.1
     handleSelectRouteName(val) {
-      this.inputRouteName = String(val);
+      this.inputRouteName = val.value;
     },
     // 2.1
     getStationByRoutePartialName() {

@@ -4,16 +4,12 @@
       <div class="solve-title">
         <p class="solve-title-p">统计停靠路线最多的站点（按照id统计）并排序，显示前15条。</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="getStationDESCOrderByStopRouteNum()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="getStationDESCOrderByStopRouteNum()"><i class="iconfont">&#xe638;</i>查询</button>
       </div>
+      <br>
       <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
-          <!--        <ul class="result-ul">-->
-          <!--          <li class="result-li" v-for="(item,index) in relatedStation15max" :key="index">-->
-          <!--            <RouteItem6 class="route-item" :stationInfo="item" :index="index"></RouteItem6>-->
-          <!--          </li>-->
-          <!--        </ul>-->
           <el-table :data="relatedStation15max" border style="width: 100%">
             <el-table-column align="center" label="站台id" prop="station.stationId" width="80"></el-table-column>
             <el-table-column align="center" label="站台名" prop="station.name" width="100"></el-table-column>
@@ -27,16 +23,12 @@
       <div class="solve-title">
         <p class="solve-title-p">查询地铁站点数，始发站点数，终点站点数，单行站点数</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="getStationTypeNum()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="getStationTypeNum()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
-          <!--          <ul class="result-ul">-->
-          <!--            <li class="result-li" v-for="(item,index) in stationNum" :key="index">-->
-          <!--              <RouteItem7 class="route-item" :NumInfo="item" :index="index"></RouteItem7>-->
-          <!--            </li>-->
-          <!--          </ul>-->
           <el-table :data="stationNum" border style="width: 100%">
             <el-table-column align="center" label="类型" prop="type"></el-table-column>
             <el-table-column align="center" label="数量统计" prop="num"></el-table-column>
@@ -48,12 +40,15 @@
     <div id="solve4-2-2" class="solve">
       <div class="solve-title">
         <p class="solve-title-p">查询某条线路单行站</p></div>
-      <div class="set-routeName-default">
-        <input v-model="lineName" class="set-routeName-default-input" placeholder="请填写line名称" type="text">
-      </div>
-      <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="getOneWayStation()"> 查询</button>
-      </div>
+      <el-row>
+        <el-col span="12">
+            <input v-model="lineName" class="set-routeName-default-input" placeholder="请填写line名称" type="text">
+        </el-col>
+        <el-col span="12">
+            <button class="search-button" type="button" v-on:click="getOneWayStation()"><i class="iconfont">&#xe638;</i> 查询</button>
+        </el-col>
+      </el-row>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
@@ -68,16 +63,12 @@
       <div class="solve-title">
         <p class="solve-title-p">得到line类型统计</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="getLineTypeNum()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="getLineTypeNum()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
-          <!--          <ul class="result-ul">-->
-          <!--            <li class="result-li" v-for="(item,index) in lineType" :key="index">-->
-          <!--              <RouteItem8 class="route-item" :NumInfo="item" :index="index"></RouteItem8>-->
-          <!--            </li>-->
-          <!--          </ul>-->
           <el-table :data="lineType" border style="width: 100%">
             <el-table-column align="center" label="类型" prop="type"></el-table-column>
             <el-table-column align="center" label="数量统计" prop="num"></el-table-column>
@@ -90,25 +81,23 @@
       <div class="solve-title">
         <p class="solve-title-p">得到两条路线重复的站点</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>线路名称（routeName）</span>
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="routeName3" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="routeName4" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
-        </div>
-        <button class="search-button" type="button" v-on:click="getRouteSameStation()"> 查询</button>
+        <el-row>
+          <el-col span="8">
+              <input v-model="routeName3" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
+          </el-col>
+          <el-col span="8">
+              <input v-model="routeName4" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
+          </el-col>
+          <el-col span="8">
+            <button class="search-button" type="button" v-on:click="getRouteSameStation()"><i class="iconfont">&#xe638;</i> 查询</button>
+          </el-col>
+        </el-row>
+        <br>
+
       </div>
       <div style="height:300px; width:80% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
-          <!--          <ul class="result-ul">-->
-          <!--            <li class="result-li" v-for="(item,index) in stationInfo" :key="index">-->
-          <!--              <RouteItem9 class="route-item" :stationInfo="item" :index="index"></RouteItem9>-->
-          <!--            </li>-->
-          <!--          </ul>-->
           <el-table :data="stationInfo" border style="width: 100%">
             <el-table-column align="center" label="站台id" prop="stationId"></el-table-column>
             <el-table-column align="center" label="站台名称" prop="name"></el-table-column>
@@ -123,22 +112,42 @@
       <div class="solve-title">
         <p class="solve-title-p">查询某线路⼀共有多少条可以换乘的线路</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>线路名称（routeName）</span>
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="routeName" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
-        </div>
-        <button class="search-button" type="button" v-on:click="queryRoutesRelated()"> 查询</button>
+        <el-row>
+          <el-col span="12">
+            <input v-model="routeName" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
+          </el-col>
+          <el-col span="12">
+            <button class="search-button" type="button" v-on:click="queryRoutesRelated()"><i class="iconfont">&#xe638;</i> 查询</button>
+          </el-col>
+        </el-row>
+        <br>
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in relatedRoutes" :key="index" class="result-li">
-              <RouteItem1 :index="index" :routeInfo="item" class="route-item"></RouteItem1>
-            </li>
-          </ul>
+<!--          <ul class="result-ul">-->
+<!--            <li v-for="(item,index) in relatedRoutes" :key="index" class="result-li">-->
+<!--              <RouteItem1 :index="index" :routeInfo="item" class="route-item"></RouteItem1>-->
+<!--            </li>-->
+<!--          </ul>-->
+          <el-card class="box-card">
+            <div slot="header">
+              <div class="text-wrapper"><i class="iconfont">&#xe6ab;</i>
+                &nbsp;&nbsp;站点</div>
+            </div>
+            <el-timeline  align="middle">
+              <el-timeline-item v-for="(item,index) of relatedRoutes" :key="index" :timestamp=index placement="top"  :icon="placeIcon">
+                <el-card class="text-wrapper">
+                  <div slot="header" class="clearfix">
+                    <span>{{item.stationName}}</span>
+                  </div>
+                  <div v-for="(item2,index2) of item.route" :key="index2" class="text item">
+                    <span><i class="iconfont">&#xe600;</i>&nbsp;&nbsp;{{item2}}&nbsp;&nbsp;</span>
+                  </div>
+                </el-card >
+              </el-timeline-item>
+            </el-timeline>
+          </el-card>
         </el-scrollbar>
       </div>
     </div>
@@ -147,16 +156,22 @@
       <div class="solve-title">
         <p class="solve-title-p">根据线路可换乘数量降序排序，显示前15条。</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="queryRoutesRelated15max()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="queryRoutesRelated15max()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in relatedRoutes15max" :key="index" class="result-li">
-              <RouteItem2 :index="index" :routeInfo="item" class="route-item"></RouteItem2>
-            </li>
-          </ul>
+<!--          <ul class="result-ul">-->
+<!--            <li v-for="(item,index) in relatedRoutes15max" :key="index" class="result-li">-->
+<!--              <RouteItem2 :index="index" :routeInfo="item" class="route-item"></RouteItem2>-->
+<!--            </li>-->
+<!--          </ul>-->
+          <el-table :data="relatedRoutes15max" border style="width: 100%">
+            <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
+            <el-table-column align="center" label="线路名" prop="name"></el-table-column>
+            <el-table-column align="center" label="可换乘数量" prop="count"></el-table-column>
+          </el-table>
         </el-scrollbar>
       </div>
     </div>
@@ -164,16 +179,23 @@
       <div class="solve-title">
         <p class="solve-title-p">查询连接两个站台之间线路最多的两个站台并且按照降序排列，显示前15个。</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="queryMaxRoutesBetween()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="queryMaxRoutesBetween()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in stationsWithMaxRoutesBetween" :key="index" class="result-li">
-              <RouteItem3 :index="index" :routeInfo="item" class="route-item"></RouteItem3>
-            </li>
-          </ul>
+<!--          <ul class="result-ul">-->
+<!--            <li v-for="(item,index) in stationsWithMaxRoutesBetween" :key="index" class="result-li">-->
+<!--              <RouteItem3 :index="index" :routeInfo="item" class="route-item"></RouteItem3>-->
+<!--            </li>-->
+<!--          </ul>-->
+          <el-table :data="stationsWithMaxRoutesBetween" border style="width: 100%">
+            <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
+            <el-table-column align="center" label="出发站" prop="m1.name"></el-table-column>
+            <el-table-column align="center" label="到达站" prop="n1.name"></el-table-column>
+            <el-table-column align="center" label="直达线路数" prop="count"></el-table-column>
+          </el-table>
         </el-scrollbar>
       </div>
     </div>
@@ -182,16 +204,22 @@
       <div class="solve-title">
         <p class="solve-title-p">根据站点数量对线路进⾏排序，显示前15条。</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="queryRoutesWithMaxStations()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="queryRoutesWithMaxStations()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in routesWithMaxStations" :key="index" class="result-li">
-              <RouteItem4 :index="index" :routeInfo="item" class="route-item"></RouteItem4>
-            </li>
-          </ul>
+<!--          <ul class="result-ul">-->
+<!--            <li v-for="(item,index) in routesWithMaxStations" :key="index" class="result-li">-->
+<!--              <RouteItem4 :index="index" :routeInfo="item" class="route-item"></RouteItem4>-->
+<!--            </li>-->
+<!--          </ul>-->
+          <el-table :data="routesWithMaxStations" border style="width: 100%">
+            <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
+            <el-table-column align="center" label="线路名称" prop="s.name"></el-table-column>
+            <el-table-column align="center" label="站点数量" prop="count"></el-table-column>
+          </el-table>
         </el-scrollbar>
       </div>
     </div>
@@ -200,16 +228,24 @@
       <div class="solve-title">
         <p class="solve-title-p">根据运⾏时间对线路进⾏排序，运⾏时间由班次数据计算⽽得，显示前15条。</p></div>
       <div class="set-routeName">
-        <button class="search-button" type="button" v-on:click="queryRoutesWithMaxRunTime()"> 查询</button>
+        <button class="search-button" type="button" v-on:click="queryRoutesWithMaxRunTime()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
+      <br>
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in routesWithMaxRunTime" :key="index" class="result-li">
-              <RouteItem5 :index="index" :routeInfo="item" class="route-item"></RouteItem5>
-            </li>
-          </ul>
+<!--          <ul class="result-ul">-->
+<!--            <li v-for="(item,index) in routesWithMaxRunTime" :key="index" class="result-li">-->
+<!--              <RouteItem5 :index="index" :routeInfo="item" class="route-item"></RouteItem5>-->
+<!--            </li>-->
+<!--          </ul>-->
+          <el-table :data="routesWithMaxRunTime" border style="width: 100%">
+            <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
+            <el-table-column align="center" label="线路名称" prop="routeName"></el-table-column>
+            <el-table-column align="center" label="运行时间(min)" prop="minutes"></el-table-column>
+            <el-table-column align="center" label="起始站" prop="start"></el-table-column>
+            <el-table-column align="center" label="终点站" prop="end"></el-table-column>
+          </el-table>
         </el-scrollbar>
       </div>
     </div>
@@ -218,13 +254,15 @@
       <div class="solve-title">
         <p class="solve-title-p">计算某条线路的重复系数。</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>线路名称（routeName）</span>
-        </div>
-        <div class="set-routeName-default">
-          <input v-model="routeName2" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
-        </div>
-        <button class="search-button" type="button" v-on:click="queryNonrepeating()"> 查询</button>
+        <el-row>
+          <el-col span="12">
+              <input v-model="routeName2" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
+          </el-col>
+          <el-col span="12">
+            <button class="search-button" type="button" v-on:click="queryNonrepeating()"><i class="iconfont">&#xe638;</i> 查询</button>
+          </el-col>
+        </el-row>
+        <br>
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
@@ -238,28 +276,20 @@
 </template>
 
 <script>
-//import RouteItem6 from "@/components/RouteItem4-1";
-//import RouteItem7 from "@/components/RouteItem4-2";
-//import RouteItem8 from "@/components/RouteItem4-3";
-//import RouteItem9 from "@/components/RouteItem4-4";
-import RouteItem1 from "@/components/RouteItem4-5";
-import RouteItem2 from "@/components/RouteItem4-6";
-import RouteItem3 from "@/components/RouteItem4-7";
-import RouteItem4 from "@/components/RouteItem4-8";
-import RouteItem5 from "@/components/RouteItem4-9";
+//import RouteItem1 from "@/components/RouteItem4-5";
+//import RouteItem2 from "@/components/RouteItem4-6";
+//import RouteItem3 from "@/components/RouteItem4-7";
+//import RouteItem4 from "@/components/RouteItem4-8";
+//import RouteItem5 from "@/components/RouteItem4-9";
 
 export default {
   name: "RouteAnalyze",
   components: {
-    RouteItem1,
-    RouteItem2,
-    RouteItem3,
-    RouteItem4,
-    RouteItem5,
-    //RouteItem6,
-    //RouteItem7,
-    //RouteItem8,
-    //RouteItem9
+    //RouteItem1,
+    //RouteItem2,
+    //RouteItem3,
+    //RouteItem4,
+    //RouteItem5,
   },
   data() {
     return {
@@ -412,6 +442,7 @@ export default {
       }).then((res) => {
         console.log(res);
         console.log(res.data);
+        //可以在这里加一个函数，去把数据变成需要的样子
         this.getOneWayStationResult = res.data.result;
 
       })
@@ -438,55 +469,91 @@ ul {
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
-
+.button-set{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: start;
+  margin-inside: 25px;
+  margin-right:10px;
+  letter-spacing: 10px;
+}
+.text-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #11468C;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  align-items: start;
+}
+.title-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: bold;
+  color: #11468C;
+  alignment: left;
+  text-align: start;
+}
 .solve {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #DAE8F2;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
+
 }
 
 .solve-title {
   text-align: left;
-  color: black;
+  color: #11468C;
   font-size: 17px;
 }
 
 .set-routeName {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 5px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
-
-.set-routeName-p {
-  color: black;
-  padding-top: 10px;
-  margin-right: 30px;
-}
-
 input {
   outline: none;
   border: none;
 }
 
 .set-routeName-default-input {
-  color: rgb(120, 120, 120);
+  color: #11468C;
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #11468C;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
+  text-align: center;
+  width: 120px;
+  height: 35px;
   margin-top: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .el-scrollbar__wrap {
@@ -496,5 +563,13 @@ input {
 .result {
   margin: 20px;
   text-align: left;
+}
+.box-card {
+  padding-top: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top:30px;
+  alignment: center;
+  background-color: #BFCEDC;
 }
 </style>

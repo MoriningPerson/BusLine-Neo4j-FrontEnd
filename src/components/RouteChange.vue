@@ -127,21 +127,24 @@
             </el-row>
             <el-row>
               <el-col :span="10">
-                <el-button size="medium" type="primary" @click="addRow">新增属性</el-button>
+                <el-button size="medium" type="primary" color="#11468C"  @click="addRow">新增属性</el-button>
               </el-col>
             </el-row>
           </el-form>
 
           <el-form-item>
-            <el-button type="primary" @click="addLine">立即创建</el-button>
-            <el-button>取消</el-button>
+            <el-button  type="primary"  color="#11468C" @click="addLine">立即创建</el-button>
+            <el-button >取消</el-button>
           </el-form-item>
         </el-form>
 
       </div>
-      <div style="height:100px; width:20%; background-color: white">
+      <div style="height:100px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
+
           <div class="result"><span>{{ this.addLineResult }}</span></div>
+
+
         </el-scrollbar>
       </div>
     </div>
@@ -150,13 +153,18 @@
       <div class="solve-title">
         <p class="solve-title-p">删除线路</p></div>
       <div class="set-line">
-        <div class="set-line-p">
-          <span>线路id（lineId）</span>
-        </div>
-        <div class="set-line-default">
-          <input v-model="lineId" class="set-line-default-input" placeholder="请填写线路id" type="text">
-        </div>
-        <button class="search-button" type="button" v-on:click="deleteLine()"> 删除</button>
+
+        <el-row>
+          <el-col span="12">
+            <div class="set-line-default">
+              <input v-model="lineId" class="set-line-default-input" placeholder="请填写线路id" type="text">
+            </div>
+          </el-col>
+          <el-col span="12">
+            <button class="search-button" type="button" v-on:click="deleteLine()"> 删除</button>
+          </el-col>
+        </el-row>
+
       </div>
       <div style="height:100px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
@@ -172,9 +180,6 @@
       <div class="solve-title">
         <p class="solve-title-p">替换某条线路的站点</p></div>
       <div class="set-line">
-        <div class="set-line-p">
-          <span>输入</span>
-        </div>
         <div class="set-line-default">
           <input v-model="lineId2" class="set-line-default-input" placeholder="请填写线路id" type="text">
         </div>
@@ -188,9 +193,11 @@
       </div>
       <div style="height:100px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
-
-          <div class="result"><span>{{ this.changeLineResult }}</span></div>
-
+          <div class="result"><span>{{ this.changeLineResultMsg }}</span></div>
+          <el-table :data="changeLineResult" border style="width: 100%">
+            <el-table-column label="线路"  prop="routeName"></el-table-column>
+            <el-table-column :formatter="stationData" label="站点"  prop="station"></el-table-column>
+          </el-table>
         </el-scrollbar>
       </div>
     </div>
@@ -211,7 +218,8 @@ export default {
       newStationId: null,
       oldStationId: null,
       lineId2: null,
-      changeLineResult: null,
+      changeLineResult: [],
+      changeLineResultMsg:null,
       addLineResult: null,
       form: {
         line: {
@@ -301,11 +309,20 @@ export default {
       }).then((res) => {
         console.log(res);
         console.log(res.data);
-        this.changeLineResult = res.data.msg;
+        this.changeLineResult = res.data.result;
+        this.changeLineResultMsg = res.data.msg;
 
       })
 
-    }
+    },
+    stationData(row){
+      let Arr = []; //新建一个数组
+      row.station.forEach((item,index) => {
+        //对当前的数组进行遍历处理
+        Arr.push("第"+index+'站:' + item.name+" \n"); //给它们每一项加上分号和空格
+      });
+      return Arr; //将有分隔符的颜色数组返回
+    },
 
   }
 }
@@ -326,13 +343,16 @@ ul {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #DAE8F2;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
 }
 
 .solve-title {
   text-align: left;
-  color: black;
+  color: #11468C;
   font-size: 17px;
 }
 
@@ -343,9 +363,15 @@ ul {
 }
 
 .set-line-p {
-  color: black;
-  padding-top: 10px;
-  margin-right: 30px;
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #11468C;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  align-items: start;
 }
 
 input {
@@ -354,22 +380,31 @@ input {
 }
 
 .set-line-default-input {
-  color: rgb(120, 120, 120);
+  color: #11468C;
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #11468C;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
+  text-align: center;
+  width: 120px;
+  height: 35px;
   margin-top: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .el-scrollbar__wrap {

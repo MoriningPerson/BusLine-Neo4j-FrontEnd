@@ -230,19 +230,19 @@ export default {
 <style scoped>
 .nav-container {
   position: fixed;
-  background-color: #2c3e50;
+  background-color: #002D74;
   text-align: center;
   width: 220px;
 }
 
 .center-nav {
-  background-color: #2c3e50;
+  background-color: #002D74;
 
 }
 
 .nav-div {
   cursor: pointer;
-  background-color: #2c3e50;
+  background-color: #002D74;
   padding: 6px;
 }
 
