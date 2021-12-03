@@ -6,8 +6,8 @@
       <div class="set-line">
         <el-form ref="form" :model="form" label-position="right" label-width="100px">
           <el-row style="border-bottom: 1px solid #f0f0f0;padding: 10px;">
-            <div>
-              <span>line信息</span>
+            <div class="solve-title" >
+              <span><i class="iconfont">&#xe74e;</i>line信息</span>
               <el-divider></el-divider>
             </div>
             <el-col :span="10">
@@ -57,8 +57,8 @@
             </el-col>
           </el-row>
 
-          <div>
-            <span>route信息</span>
+          <div class="solve-title">
+            <span><i class="iconfont">&#xe6ab;</i>route信息</span>
             <el-divider></el-divider>
           </div>
 
@@ -81,8 +81,8 @@
             </el-col>
           </el-row>
 
-          <div>
-            <span>站点信息</span>
+          <div class="solve-title">
+            <span ><i class="iconfont">&#xe61f;</i>站点信息 </span>
             <el-divider></el-divider>
           </div>
 
@@ -120,7 +120,7 @@
                     v-if="form.formData2.stationList.length > 1"
                     size="medium"
                     type="danger"
-                    @click="removeRow(index)"
+                    @click="removeRow(item,index)"
                 >删除
                 </el-button>
               </el-col>
@@ -260,7 +260,7 @@ export default {
         name: "永通路2",
         english: "YongTongLu",
         stationId: 4132,
-        // key: Date.now() // 更改前没有
+       // key: Date.now() // 更改前没有
       });
     },
     addLine() {
@@ -282,8 +282,10 @@ export default {
       })
 
     },
-    removeRow(index) {
-      this.form.stationList.splice(index, 1);
+    removeRow(item,index) {
+      console.log(item)
+      console.log(index)
+      this.form.formData2.stationList.splice(index, 1);
     },
     deleteLine() {
       console.log(this.routeName)

@@ -10,14 +10,20 @@
           &nbsp;
           <span>公交名称 </span>
         </div>
-        <div class="set-routeName-default">
-          <el-autocomplete v-model="inputRouteName" :fetch-suggestions="querySearchRouteName"
-                           :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写公交名称"
-                           @input="searchFullRouteName" @select="handleSelectRouteName"></el-autocomplete>
-        </div>
-        <br>
-        <button class="search-button" type="button" @click="getStationByRoutePartialName()"> <i class="iconfont">&#xe638;</i>
-        </button>
+        <el-row>
+          <el-col span="15">
+              <el-autocomplete v-model="inputRouteName" :fetch-suggestions="querySearchRouteName"
+                               :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写公交名称"
+                               @input="searchFullRouteName" @select="handleSelectRouteName"></el-autocomplete>
+
+          </el-col>
+          <el-col span="8">
+            <button class="search-button" type="button" @click="getStationByRoutePartialName()"> <i class="iconfont">&#xe638;</i>
+            </button>
+          </el-col>
+        </el-row>
+
+
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
@@ -207,7 +213,7 @@ input {
   text-align: center;
   width: 35px;
   height: 25px;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 5px;
   cursor: pointer;
   font-weight: bold;

@@ -1,4 +1,5 @@
 <template>
+  <div class="building">
   <div class="nav-container">
     <nav class="center-nav">
       <div class="nav-div" @click="stationUnfold()">
@@ -23,7 +24,7 @@
       </div>
 
       <div class="nav-div" @click="analysisUnfold()">
-        <p :class='{nav_title: !analysis_unfold,nav_title_click: analysis_unfold}'>分析查询</p>
+        <p :class='{nav_title: !analysis_unfold,nav_title_click: analysis_unfold}'>线路查询</p>
 <!--        <div v-if="analysis_unfold" class="nav-next" @click="stationAnalyze()">-->
 <!--          <p :class='{nav_p: !station_analysis_click,nav_p_click: station_analysis_click}'>统计站点信息</p>-->
 <!--        </div>-->
@@ -42,6 +43,7 @@
         </div>
       </div>
     </nav>
+  </div>
   </div>
 </template>
 
@@ -272,5 +274,11 @@ export default {
   font-size: 15px;
   letter-spacing: 4px;
   margin-left: 20px;
+}
+.building{
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background: url("~@/components/pic/bg.jpg");
 }
 </style>

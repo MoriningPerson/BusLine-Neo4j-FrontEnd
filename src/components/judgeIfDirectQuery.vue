@@ -9,17 +9,23 @@
       <div class="text-wrapper">
         <span>站点名称</span>
       </div>
-      <div class="set-routeName-default">
-        <el-autocomplete v-model="stationName261" :fetch-suggestions="querySearch261"
-                         :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写站点1的名称"
-                         @input="searchFullStationName261" @select="handleSelect261"></el-autocomplete>
-      </div>
-      <div class="set-routeName-default">
-        <el-autocomplete v-model="stationName262" :fetch-suggestions="querySearch262"
-                         :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写站点2的名称"
-                         @input="searchFullStationName262" @select="handleSelect262"></el-autocomplete>
-      </div>
-      <button class="search-button" type="button" @click="judgeIfDirect()"> <i class="iconfont">&#xe638;</i></button>
+      <el-row>
+        <el-col span="9">
+          <el-autocomplete v-model="stationName261" :fetch-suggestions="querySearch261"
+                           :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写站点1的名称"
+                           @input="searchFullStationName261" @select="handleSelect261"></el-autocomplete>
+
+        </el-col>
+        <el-col span="9">
+          <el-autocomplete v-model="stationName262" :fetch-suggestions="querySearch262"
+                           :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写站点2的名称"
+                           @input="searchFullStationName262" @select="handleSelect262"></el-autocomplete>
+
+        </el-col>
+        <el-col span="6">
+          <button class="search-button" type="button" @click="judgeIfDirect()"> <i class="iconfont">&#xe638;</i></button>
+        </el-col>
+      </el-row>
     </div>
 
     <div style="height:300px; width:80% ; background-color: white">
@@ -123,10 +129,10 @@ export default {
       cb(stationName262Arr);
     },
     handleSelect261(val) {
-      this.staionName261 = val;
+      this.stationName261 = val.val;
     },
     handleSelect262(val) {
-      this.staionName262 = val;
+      this.stationName262 = val.val;
     },
     // 2.6
     judgeIfDirect() {
@@ -215,7 +221,7 @@ ul {
 }
 
 .set-routeName {
-  margin-top: 30px;
+  margin-top: 5px;
   margin-bottom: 30px;
   display: flex;
   flex-wrap:wrap;
@@ -252,7 +258,7 @@ input {
   text-align: center;
   width: 35px;
   height: 25px;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 5px;
   cursor: pointer;
   font-weight: bold;
