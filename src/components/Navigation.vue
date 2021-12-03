@@ -24,9 +24,9 @@
 
       <div class="nav-div" @click="analysisUnfold()">
         <p :class='{nav_title: !analysis_unfold,nav_title_click: analysis_unfold}'>分析查询</p>
-        <div v-if="analysis_unfold" class="nav-next" @click="stationAnalyze()">
-          <p :class='{nav_p: !station_analysis_click,nav_p_click: station_analysis_click}'>统计站点信息</p>
-        </div>
+<!--        <div v-if="analysis_unfold" class="nav-next" @click="stationAnalyze()">-->
+<!--          <p :class='{nav_p: !station_analysis_click,nav_p_click: station_analysis_click}'>统计站点信息</p>-->
+<!--        </div>-->
         <div v-if="analysis_unfold" class="nav-next" @click="routeAnalyze()">
           <p :class='{nav_p: !route_analysis_click,nav_p_click: route_analysis_click}'>统计线路信息</p>
         </div>
@@ -35,16 +35,12 @@
         </div>
       </div>
 
-      <!--      <div class="nav-div" @click="tryUnfold()">-->
-      <!--        <p :class='{nav_title: !try_unfold,nav_title_click: try_unfold}'>前端实验</p>-->
-      <!--        <div class="nav-next" @click="tryV()" v-if="try_unfold">-->
-      <!--          <p :class='{nav_p: !tryV_click,nav_p_click: tryV_click}'>视频播放</p>-->
-      <!--        </div>-->
-      <!--        <div class="nav-next" @click="dropDown()" v-if="try_unfold">-->
-      <!--          <p :class='{nav_p: !dropDown_click,nav_p_click: dropDown_click}'>下拉选项</p>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
+      <div class="nav-div" @click="runsUnfold()">
+        <p :class='{nav_title: !runs_unfold,nav_title_click: runs_unfold}'>班次查询</p>
+        <div v-if="runs_unfold" class="nav-next" @click="runsAnalyze()">
+          <p :class='{nav_p: !route_runs_click,nav_p_click: route_runs_click}'>线路班次信息</p>
+        </div>
+      </div>
     </nav>
   </div>
 </template>
@@ -55,11 +51,11 @@ export default {
   name: "Navigation",
   data() {
     return {
-      // 2. 站点查询
       station_unfold: false,
       station_query_click: false,
       oneRouteAllStation_query_click: false, //2.1
       oneStationAllRoute_query_click: false, //2.3
+      alongStation_query_click:false,
       bestPlan_query_click: false, //2.5
       ifDirect_query_click: false, //2.6
       // 分析查询
@@ -72,42 +68,14 @@ export default {
       dropDown_click: false,
       // 线路更改
       route_change_click: false,
+      //班次查询
+      runs_unfold:false,
+      route_runs_click:false,
+
+
     }
   },
   methods: {
-    tryUnfold() {
-      this.try_unfold = true;
-      // 关闭 站点查询
-      this.station_unfold = false;
-      // 关闭 “站点查询”的其他子菜单
-      this.oneStationAllRoute_query_click = false;
-      this.alongStation_query_click = false;
-      this.bestPlan_query_click = false;
-      this.ifDirect_query_click = false;
-      // 关闭 分析查询
-      this.route_analysis_click = false;
-      this.route_change_click = false;
-      this.station_analysis_click = false;
-    },
-    dropDown() {
-      this.dropDown = true;
-      // 关闭前端实验的其他子菜单
-      this.try_unfold = false;
-      // 关闭 站点查询
-      this.station_unfold = false;
-      // 关闭 “站点查询”的其他子菜单
-      this.oneStationAllRoute_query_click = false;
-      this.alongStation_query_click = false;
-      this.bestPlan_query_click = false;
-      this.ifDirect_query_click = false;
-      // 关闭 分析查询
-      this.route_analysis_click = false;
-      this.route_change_click = false;
-      this.station_analysis_click = false;
-      this.$router.push({
-        name: 'dropDown',
-      })
-    },
     // 2. 站点查询
     stationUnfold() {
       this.station_unfold = true;
@@ -115,18 +83,9 @@ export default {
       this.route_analysis_click = false;
       this.route_change_click = false;
       this.station_analysis_click = false;
+      //关闭班次查询
+      this.route_runs_click = false;
     },
-    stationQuery() {
-      this.station_query_click = true;
-      this.route_analysis_click = false;
-      this.route_change_click = false;
-      this.station_analysis_click = false;
-      this.$router.push({
-        name: 'StationQuery',
-      })
-
-    },
-
     // 2.1
     oneRouteStationQuery() {
       this.oneRouteAllStation_query_click = true;
@@ -134,6 +93,8 @@ export default {
       this.route_analysis_click = false;
       this.route_change_click = false;
       this.station_analysis_click = false;
+      //关闭班次查询
+      this.route_runs_click = false;
       // 关闭 “站点查询”的其他子菜单
       this.oneStationAllRoute_query_click = false;
       this.alongStation_query_click = false;
@@ -151,6 +112,8 @@ export default {
       this.route_analysis_click = false;
       this.route_change_click = false;
       this.station_analysis_click = false;
+      //关闭班次查询
+      this.route_runs_click = false;
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.alongStation_query_click = false;
@@ -168,6 +131,8 @@ export default {
       this.route_analysis_click = false;
       this.route_change_click = false;
       this.station_analysis_click = false;
+      //关闭班次查询
+      this.route_runs_click = false;
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.oneStationAllRoute_query_click = false;
@@ -190,6 +155,10 @@ export default {
       this.oneStationAllRoute_query_click = false;
       this.alongStation_query_click = false;
       this.ifDirect_query_click = false;
+
+      this.$router.push({
+        name: 'bestRouteQuery',
+      })
     },
     // 2.6
     ifDirectQuery() {
@@ -198,6 +167,8 @@ export default {
       this.route_analysis_click = false;
       this.route_change_click = false;
       this.station_analysis_click = false;
+      //关闭班次查询
+      this.route_runs_click = false;
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.oneStationAllRoute_query_click = false;
@@ -212,18 +183,33 @@ export default {
     analysisUnfold() {
       this.analysis_unfold = true;
     },
+    runsUnfold(){
+      this.runs_unfold = true;
+    },
     stationAnalyze() {
       this.station_analysis_click = true;
       this.route_analysis_click = false;
       this.route_change_click = false;
+      this.route_runs_click = false;
 
     },
     routeAnalyze() {
       this.route_analysis_click = true;
       this.station_analysis_click = false;
       this.route_change_click = false;
+      this.route_runs_click = false;
       this.$router.push({
         name: 'RouteAnalyze',
+      })
+
+    },
+    runsAnalyze() {
+      this.route_runs_click = true;
+      this.route_analysis_click = false;
+      this.station_analysis_click = false;
+      this.route_change_click = false;
+      this.$router.push({
+        name: 'RunsAnalyze',
       })
 
     },
@@ -231,10 +217,10 @@ export default {
       this.route_change_click = true;
       this.route_analysis_click = false;
       this.station_analysis_click = false;
+      this.route_runs_click = false;
       this.$router.push({
         name: 'RouteChange',
       })
-
     },
 
   },

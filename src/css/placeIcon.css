@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('~@/assets/fonts/placeIcon/iconfont.ttf') format('truetype');
+    src: url('https://at.alicdn.com/t/font_985780_km7mi63cihi.eot?t=1545807318834#iefix') format('embedded-opentype'),
+    url('~@/assets/fonts/placeIcon/iconfont.woff') format('woff'),
+    url('~@/assets/fonts/placeIcon/iconfont.svg') format('svg');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

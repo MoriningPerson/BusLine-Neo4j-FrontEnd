@@ -2,15 +2,24 @@
   <div>
     <div id="solve2-3" class="solve">
       <div class="solve-title">
-        <p class="solve-title-p">查询某个站停靠的所有线路</p></div>
+        <p class="title-wrapper"><i class="iconfont">&#xe623;</i>&nbsp;&nbsp;站点停靠线路</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>站点名称（stationName）</span>
+        <div class="title-wrapper">
+          <br>
+          <i class="iconfont">&#xe622;</i>
+          &nbsp;
+          <span>站点名称 </span>
+          &nbsp;
         </div>
+
         <div class="set-routeName-default">
+          <br>
           <input v-model="stationName" class="set-routeName-default-input" placeholder="请填写站点名称" type="text">
+
         </div>
-        <button class="search-button" type="button" @click="getOneStationAllRoute()"> 查询</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="search-button" type="button" @click="getOneStationAllRoute()"> <i class="iconfont">&#xe638;</i>
+        </button>
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
@@ -29,6 +38,10 @@
 
 <script>
 import StationItem3 from "@/components/StationItem2-3";
+import '@/css/placeIcon.css';
+import '@/css/placeIcon.js';
+import '@/css/frontIcon.css';
+import '@/css/frontIcon.js';
 
 export default {
   name: "getOneStationAllRoutesQuery",
@@ -76,12 +89,33 @@ ul {
   overflow-x: hidden;
 }
 
+.text-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: center;
+  text-align: start;
+}
+.title-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: left;
+  text-align: start;
+}
 .solve {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #ececea;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
 }
 
 .solve-title {
@@ -116,16 +150,20 @@ input {
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #a29988;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
-  margin-top: 5px;
+  text-align: center;
+  width: 35px;
+  height: 25px;
+  margin-top: 30px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
-
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
@@ -133,5 +171,12 @@ input {
 .result {
   margin: 20px;
   text-align: left;
+}
+.box-card {
+  padding-top: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  alignment: center;
+  background-color: #d3d4cc;
 }
 </style>

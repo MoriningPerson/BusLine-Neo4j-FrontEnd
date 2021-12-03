@@ -7,15 +7,17 @@ import VueRouter from 'vue-router';
 import Router from 'vue-router';
 import RouteAnalyze from "@/components/RouteAnalyze";
 import RouteChange from "@/components/RouteChange";
+import RunsAnalyze  from "@/components/RunsAnalyze";
 
-// 2. 站点查询的总界面
-import StationQuery from "@/components/StationQuery";
+// 2. 站点查询
 //2.1
 import oneRouteStationQuery from "@/components/oneRouteStationQuery";
 // 2.3
 import getOneStationAllRoutesQuery from "@/components/getOneStationAllRoutesQuery";
 // 2.4
 import alongStationQuery from "@/components/alongStationQuery";
+// 2.5
+import bestRouteQuery from "@/components/bestRouteQuery";
 // 2.6
 import judgeIfDirectQuery from "@/components/judgeIfDirectQuery";
 
@@ -42,6 +44,11 @@ const routers = [
         name: 'RouteChange',
         component: RouteChange
     },
+    {
+        path: '/runs_analyze',
+        name: 'RunsAnalyze',
+        component: RunsAnalyze
+    },
     //
     {
         path: '/tryV',
@@ -52,12 +59,6 @@ const routers = [
         path: '/dropDown',
         name: 'dropDown',
         component: dropDown
-    },
-    // 2.站点查询的总页面
-    {
-        path: '/station_query',
-        name: 'StationQuery',
-        component: StationQuery
     },
     // 2.1 查询公交站点
     {
@@ -76,6 +77,12 @@ const routers = [
         path: '/station_query_2.4',
         name: 'alongStationQuery',
         component: alongStationQuery
+    },
+    // 2.5  查询最优路线
+    {
+        path: '/station_query_2.5',
+        name: 'bestRouteQuery',
+        component: bestRouteQuery
     },
     // 2.6 查询 两个站点间 是否可 直达
     {

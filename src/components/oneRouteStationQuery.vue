@@ -2,24 +2,49 @@
   <div>
     <div id="solve2-1" class="solve">
       <div class="solve-title">
-        <p class="solve-title-p">查询某公交的全部站点(上下行不定)</p></div>
+        <p class="title-wrapper"><i class="iconfont">&#xe623;</i>&nbsp;&nbsp;查询公交全部站点</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>全部站点信息</span>
+        <div class="title-wrapper">
+          <br>
+          <i class="iconfont">&#xe622;</i>
+          &nbsp;
+          <span>公交名称 </span>
         </div>
         <div class="set-routeName-default">
-          <input v-model="busName" class="set-routeName-default-input" placeholder="请填写公交的部分名称" type="text">
+          <el-autocomplete v-model="inputRouteName" :fetch-suggestions="querySearchRouteName"
+                           :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写公交名称"
+                           @input="searchFullRouteName" @select="handleSelectRouteName"></el-autocomplete>
         </div>
-        <button class="search-button" type="button" @click="getStationByRoutePartialName()"> 查询</button>
+        &nbsp;&nbsp;
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="search-button" type="button" @click="getStationByRoutePartialName()"> <i class="iconfont">&#xe638;</i>
+        </button>
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
+          <!--        <ul class="result-ul">-->
+          <!--          <li v-for="(item,index) in bestRouteInfo252" :key="index" class="result-li">-->
+          <!--            <StationItem252 :index="index" :bestRoute252Info="item" class="route-item"></StationItem252>-->
+          <!--          </li>-->
+          <!--        </ul>-->
+          <el-card class="box-card">
+            <div slot="header">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in oneRouteAllStationInfo" :key="index" class="result-li">
-              <StationItem1 :index="index" :stationInfo="item" class="route-item"></StationItem1>
-            </li>
-          </ul>
+              <div class="text-wrapper"><i class="iconfont">&#xe6ab;</i>
+                &nbsp;&nbsp;站点</div>
+            </div>
+            <el-timeline  align="middle">
+
+              <el-timeline-item v-for="(item,index) of oneRouteAllStationInfo" :key="index" :timestamp="index" :icon="placeIcon">
+                <el-card >
+                  <span>{{item.id}}</span>>
+                  <span>{{item.name}}</span>
+                  <span>{{item.english}}</span>
+                </el-card >
+              </el-timeline-item>
+            </el-timeline>
+          </el-card>
         </el-scrollbar>
       </div>
     </div>
@@ -28,25 +53,67 @@
 </template>
 
 <script>
-import StationItem1 from "@/components/StationItem2-1";
+// import StationItem1 from "@/components/StationItem2-1";
+import '@/css/placeIcon.css';
+import '@/css/placeIcon.js';
+import '@/css/frontIcon.css';
+import '@/css/frontIcon.js';
 
 export default {
   name: "oneRouteStationQuery",
   components: {
-    StationItem1
+    // StationItem1,
+
   },
 
   data() {
     return {
       oneRouteAllStationInfo: null,
-      busName: "",
+      inputRouteName:"",
+      inputRouteNameArr:[],
     }
   },
+  watch: {
+    // 2.1
+    "inputRouteName": {
+      deep: true,
+      handler: function () {
+        this.inputRouteNameArr = []; //这是定义好的用于存放下拉提醒框中数据的数组
 
+      }
+    },
+  },
   methods: {
+    searchFullRouteName() {
+      let _this = this
+      this.$axios.get('http://localhost:8081/StationEntry/findFullRouteName?inputRouteName=' + _this.inputRouteName, {
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then(function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data.result);
+          // el-autocomplete元素 要求 数组内是对象 且有 value 属性
+          for (var j = 0; j < res.data.result.length; j++) {
+            var obj = {value: ""};
+            obj.value = res.data.result[j];
+            _this.inputRouteNameArr.push(obj);
+          }
+        }
+      })
+    },
+    // 2.1
+    querySearchRouteName(queryString, cb) {
+      var inputRouteNameArr = this.inputRouteNameArr;
+      cb(inputRouteNameArr);
+    },
+    // 2.1
+    handleSelectRouteName(val) {
+      this.inputRouteName = String(val);
+    },
     // 2.1
     getStationByRoutePartialName() {
-      this.$axios.get('http://localhost:8081/StationEntry/getOneBusAllStationInfo?busName=' + this.busName, {
+      this.$axios.get('http://localhost:8081/StationEntry/getOneBusAllStationInfo?busName=' + this.inputRouteName.toString(), {
         headers: { //设置上传请求头
           'Content-Type': 'application/json',
         },
@@ -70,13 +137,33 @@ ul {
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
-
+.text-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: center;
+  text-align: start;
+}
+.title-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: left;
+  text-align: start;
+}
 .solve {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #ececea;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
 }
 
 .solve-title {
@@ -111,14 +198,19 @@ input {
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #a29988;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
-  margin-top: 5px;
+  text-align: center;
+  width: 35px;
+  height: 25px;
+  margin-top: 30px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .el-scrollbar__wrap {
@@ -128,5 +220,13 @@ input {
 .result {
   margin: 20px;
   text-align: left;
+}
+.box-card {
+  padding-top: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top:30px;
+  alignment: center;
+  background-color: #d3d4cc;
 }
 </style>

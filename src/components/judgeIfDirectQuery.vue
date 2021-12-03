@@ -4,10 +4,10 @@
 
 
     <div class="solve-title">
-      <p class="solve-title-p">判断两站间是否可直达</p></div>
+      <p class="title-wrapper">判断直达</p></div>
     <div class="set-routeName">
-      <div class="set-routeName-p">
-        <span>站点名称（stationName）</span>
+      <div class="text-wrapper">
+        <span>站点名称</span>
       </div>
       <div class="set-routeName-default">
         <el-autocomplete v-model="stationName261" :fetch-suggestions="querySearch261"
@@ -19,35 +19,41 @@
                          :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写站点2的名称"
                          @input="searchFullStationName262" @select="handleSelect262"></el-autocomplete>
       </div>
-      <button class="search-button" type="button" @click="judgeIfDirect()"> 查询</button>
+      <button class="search-button" type="button" @click="judgeIfDirect()"> <i class="iconfont">&#xe638;</i></button>
     </div>
 
     <div style="height:300px; width:80% ; background-color: white">
 
-      <el-scrollbar style="height:100%; width: 100%">
-        <ul class="result-ul">
-          <li v-for="(item,index) in ifDirect" :key="index" class="result-li">
-            <StationItem6 :directInfo="item" :index="index" class="route-item"></StationItem6>
-          </li>
-        </ul>
-      </el-scrollbar>
+<!--      <el-scrollbar style="height:100%; width: 100%">-->
+<!--        <ul class="result-ul">-->
+<!--          <li v-for="(item,index) in ifDirect" :key="index" class="result-li">-->
+<!--            <StationItem6 :directInfo="item" :index="index" class="route-item"></StationItem6>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </el-scrollbar>-->
+      <el-card class="text-wrapper">
+        <span><i class="iconfont">&#xe614;</i>&nbsp;&nbsp;{{ifDirect}}</span>
+        <br><br>
+        <span><i class="iconfont">&#xe6e5;</i>&nbsp;&nbsp;<div class="ans-wrapper"><br>直达线路为：</div><br>{{routeInfo}}&nbsp;&nbsp;</span>
+      </el-card >
 
     </div>
   </div>
 </template>
 
 <script>
-import StationItem6 from "@/components/StationItem2-6";
+// import StationItem6 from "@/components/StationItem2-6";
 
 export default {
   name: "judgeIfDirectQuery",
   components: {
-    StationItem6
+    // StationItem6
   },
 
   data() {
     return {
       ifDirect: null,
+      routeInfo: null,
 
       stationName261: "", // 用户正在输入的站名1
       stationName261Arr: [],
@@ -124,7 +130,6 @@ export default {
     },
     // 2.6
     judgeIfDirect() {
-      console.log(this.stationName)
       this.$axios.get('http://localhost:8081/StationEntry/ifDirectRouteExists?stationName1=' + this.stationName261 + '&stationName2=' + this.stationName262, {
         headers: {   //设置上传请求头
           'Content-Type': 'application/json',
@@ -133,10 +138,11 @@ export default {
         console.log(res);
         console.log(res.data.result);
         if (res.data.msg == "成功") {
-          this.ifDirect = res.data.result;
+          this.ifDirect="存在直达线路";
+          this.routeInfo = res.data.result;
         } else {
-          this.ifDirect = [];
-          this.ifDirect.push("不存在直达路线");
+          this.routeInfo = "无";
+          this.ifDirect="不存在直达线路";
         }
 
       })
@@ -146,6 +152,11 @@ export default {
 }
 </script>
 
+import '@/css/placeIcon.css';
+import '@/css/placeIcon.js';
+import '@/css/frontIcon.css';
+import '@/css/frontIcon.js';
+
 <style scoped>
 ul {
   list-style-type: none;
@@ -153,38 +164,48 @@ ul {
   margin: 0;
 }
 
-.video-container {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.video-container .poster img {
-  z-index: 0;
-  position: absolute;
-}
-
-.video-container .filter {
-  z-index: 1;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.4);
-  width: 100%;
-}
-
-.fillWidth {
-  width: 100%;
-}
-
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
-
+.text-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: center;
+  text-align: start;
+}
+.ans-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.title-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: left;
+  text-align: start;
+}
 .solve {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #ececea;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
 }
 
 .solve-title {
@@ -197,6 +218,9 @@ ul {
   margin-top: 30px;
   margin-bottom: 30px;
   display: flex;
+  flex-wrap:wrap;
+  flex-direction: column;
+  align-items: start;
 }
 
 .set-routeName-p {
@@ -219,14 +243,19 @@ input {
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #a29988;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
-  margin-top: 5px;
+  text-align: center;
+  width: 35px;
+  height: 25px;
+  margin-top: 30px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .el-scrollbar__wrap {
@@ -236,5 +265,13 @@ input {
 .result {
   margin: 20px;
   text-align: left;
+}
+.box-card {
+  padding-top: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top:30px;
+  alignment: center;
+  background-color: #d3d4cc;
 }
 </style>

@@ -3,11 +3,8 @@
 
     <div id="solve2-4-1" class="solve">
       <div class="solve-title">
-        <p class="solve-title-p">查询线路运行方向、沿途站点、运行时长</p></div>
+        <p class="title-wrapper"><i class="iconfont">&#xe623;</i>&nbsp;&nbsp;沿途一览</p></div>
       <div class="set-routeName">
-        <div class="set-routeName-p">
-          <span>沿途信息</span>
-        </div>
         <div class="set-routeName-default">
           <input v-model="stationName241" class="set-routeName-default-input" placeholder="请填写站点1的名称" type="text">
         </div>
@@ -17,31 +14,50 @@
         <div class="set-routeName-default">
           <input v-model="busPartialName" class="set-routeName-default-input" placeholder="请填写线路的部分名称" type="text">
         </div>
-        <button class="search-button" type="button" @click="getBusDirection()"> 线路方向</button>
-        <button class="search-button" type="button" @click="alongStationsBetween()"> 沿途站点</button>
-        <button class="search-button" type="button" @click="timeCost()"> 运行时长</button>
+      </div>
+      <div class="button-set">
+        <button class="search-button" type="button" @click="getBusDirection()"> <i class="iconfont">&#xe602;</i>方向</button>
+        <button class="search-button" type="button" @click="alongStationsBetween()"> <i class="iconfont">&#xe600;</i>沿途</button>
+        <button class="search-button" type="button" @click="timeCost()"> <i class="iconfont">&#xe74f;</i>时长</button>
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
-          <div class="result"><span>线路运行方向：{{ this.busWholeName }}</span></div>
+          <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe602;</i>&nbsp;线路运行方向：<br><br>&nbsp;{{ this.busWholeName }}</div></div>
+        </el-scrollbar>
+      </div>
+      <div style="height:300px; width:80%; background-color: white">
+<!--        <el-scrollbar style="height:100%; width: 100%">-->
+
+<!--          <ul class="result-ul">-->
+<!--            <li v-for="(item,index) in alongStationsBetweenTwoStations" :key="index" class="result-li">-->
+<!--              <StationItem242 :index="index" :stationInfo="item" class="route-item"></StationItem242>-->
+<!--            </li>-->
+<!--          </ul>-->
+
+
+<!--        </el-scrollbar>-->
+        <el-scrollbar style="height:100%; width: 100%">
+          <el-card class="box-card">
+            <div slot="header">
+
+              <div class="text-wrapper"><i class="iconfont">&#xe6ab;</i>
+                &nbsp;&nbsp;沿途信息</div>
+            </div>
+            <el-timeline  align="middle">
+              <el-timeline-item v-for="(item,index) of alongStationsBetweenTwoStations" :key="index" :timestamp=item.stationId placement="top"  :icon="placeIcon">
+                <el-card class="text-wrapper">
+                  <span><i class="iconfont">&#xe61f;</i>&nbsp;&nbsp;{{item.name}}&nbsp;&nbsp;</span>
+                  <span>{{item.english}}</span>
+                </el-card >
+              </el-timeline-item>
+            </el-timeline>
+          </el-card>
         </el-scrollbar>
       </div>
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <ul class="result-ul">
-            <li v-for="(item,index) in alongStationsBetweenTwoStations" :key="index" class="result-li">
-              <StationItem242 :index="index" :stationInfo="item" class="route-item"></StationItem242>
-            </li>
-          </ul>
-
-
-        </el-scrollbar>
-      </div>
-      <div style="height:300px; width:80%; background-color: white">
-        <el-scrollbar style="height:100%; width: 100%">
-
-          <div class="result"><span>运行时长：{{ this.timeConsume }}</span></div>
+          <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe74f;</i>&nbsp;运行时长：<br><br>&nbsp;{{ this.timeConsume }}</div></div>
 
         </el-scrollbar>
       </div>
@@ -53,12 +69,16 @@
 
 <script>
 
-import StationItem242 from "@/components/StationItem242";
+// import StationItem242 from "@/components/StationItem242";
+import '@/css/placeIcon.css';
+import '@/css/placeIcon.js';
+import '@/css/frontIcon.css';
+import '@/css/frontIcon.js';
 
 export default {
   name: "alongStationQuery",
   components: {
-    StationItem242,
+    // StationItem242,
   },
 
   data() {
@@ -132,13 +152,44 @@ ul {
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
-
+.button-set{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: start;
+  margin-inside: 25px;
+  margin-right:10px;
+  letter-spacing: 10px;
+}
+.text-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  align-items: start;
+}
+.title-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 20px;
+  font-weight: bold;
+  color: #a29988;
+  alignment: left;
+  text-align: start;
+}
 .solve {
   margin-left: 300px;
   margin-right: 100px;
   padding: 40px;
-  background-color: rgba(240, 240, 240, 0.6);
+  /*background-color: rgba(240, 240, 240, 0.6);*/
+  background-color: #ececea;
   margin-bottom: 30px;
+  border-radius: 12px;
+  width: 800px;
 }
 
 .solve-title {
@@ -149,16 +200,11 @@ ul {
 
 .set-routeName {
   margin-top: 30px;
-  margin-bottom: 30px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
-
-.set-routeName-p {
-  color: black;
-  padding-top: 10px;
-  margin-right: 30px;
-}
-
 input {
   outline: none;
   border: none;
@@ -169,18 +215,27 @@ input {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .search-button {
   color: white;
-  background-color: rgb(186, 201, 224);;
+  background-color: #a29988;
   border-color: white;
-  border-radius: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 黑体;
   letter-spacing: 8px;
-  width: 70px;
-  height: 34px;
-  margin-top: 5px;
+  text-align: center;
+  width: 120px;
+  height: 35px;
+  margin-top: 30px;
+  margin-bottom: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .el-scrollbar__wrap {
@@ -190,5 +245,13 @@ input {
 .result {
   margin: 20px;
   text-align: left;
+}
+.box-card {
+  padding-top: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top:30px;
+  alignment: center;
+  background-color: #d3d4cc;
 }
 </style>
