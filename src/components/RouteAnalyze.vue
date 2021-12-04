@@ -177,7 +177,7 @@
     </div>
     <div id="solve4-7" class="solve">
       <div class="solve-title">
-        <p class="solve-title-p">查询连接两个站台之间线路最多的两个站台并且按照降序排列，显示前15个。</p></div>
+        <p class="solve-title-p">查询连接两个相邻站台之间线路最多的两个站台并且按照降序排列，显示前15个。</p></div>
       <div class="set-routeName">
         <button class="search-button" type="button" v-on:click="queryMaxRoutesBetween()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
