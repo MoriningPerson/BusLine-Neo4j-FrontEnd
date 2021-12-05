@@ -194,7 +194,7 @@
       <div style="height:100px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <div class="result"><span>{{ this.changeLineResultMsg }}</span></div>
-          <el-table :data="changeLineResult" border style="width: 100%">
+          <el-table :data="changeLineResult" border style="width: 100%;height: 50px">
             <el-table-column label="线路"  prop="routeName"></el-table-column>
             <el-table-column :formatter="stationData" label="站点"  prop="station"></el-table-column>
           </el-table>
@@ -346,10 +346,12 @@ ul {
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #DAE8F2;
+  background-color: #E1F3F2;
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position: relative;
+  opacity: 0.97;
 }
 
 .solve-title {
@@ -394,8 +396,9 @@ input {
 
 .search-button {
   color: white;
-  background-color: #11468C;
-  border-color: white;
+  /*background-color: #11468C;*/
+  background-color: #00CFCB;
+  border-color: #00A49D;
   border-radius: 5px;
   font-size: 16px;
   font-family: 黑体;

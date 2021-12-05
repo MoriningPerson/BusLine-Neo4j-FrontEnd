@@ -25,14 +25,14 @@
 
 
       </div>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:800px; width:80%; background-color: white; border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
           <!--          <li v-for="(item,index) in bestRouteInfo252" :key="index" class="result-li">-->
           <!--            <StationItem252 :index="index" :bestRoute252Info="item" class="route-item"></StationItem252>-->
           <!--          </li>-->
           <!--        </ul>-->
-          <el-card class="box-card">
+          <el-card class="box-card" style="border-radius: 8px">
             <div slot="header">
 
               <div class="text-wrapper"><i class="iconfont">&#xe6ab;</i>
@@ -40,11 +40,10 @@
             </div>
             <el-timeline  align="middle">
 
-              <el-timeline-item v-for="(item,index) of oneRouteAllStationInfo" :key="index" :timestamp="index" :icon="placeIcon">
+              <el-timeline-item v-for="(item,index) of oneRouteAllStationInfo" :key="index" :timestamp="index+1" :icon="icon-jiaotong">
                 <el-card >
-                  <span>{{item.id}}</span>>
-                  <span>{{item.name}}</span>
-                  <span>{{item.english}}</span>
+                  <span></span>
+                  <span> <div class="text-wrapper"><i class="iconfont">&#xe61f;</i>&nbsp;&nbsp;{{item.id}} {{item.name}}  --  {{item.english}}</div></span>
                 </el-card >
               </el-timeline-item>
             </el-timeline>
@@ -97,14 +96,12 @@ export default {
       }).then(function (res) {
         if (res.data.code == 200) {
           console.log(res.data.result);
-          //el-autocomplete元素 要求 数组内是对象 且有 value 属性
+          // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
-            let obj = {};
+            var obj = {value: ""};
             obj.value = res.data.result[j];
             _this.inputRouteNameArr.push(obj);
-            console.log(obj);
           }
-
         }
       })
     },
@@ -170,6 +167,8 @@ ul {
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position: relative;
+  opacity: 0.97;
 }
 
 .solve-title {
@@ -234,5 +233,8 @@ input {
   margin-top:30px;
   alignment: center;
   background-color: #d3d4cc;
+}
+.icon-jiaotong:before {
+  content: "\e612";
 }
 </style>

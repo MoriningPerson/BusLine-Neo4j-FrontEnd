@@ -29,23 +29,12 @@
         <button class="search-button" type="button" @click="alongStationsBetween()"> <i class="iconfont">&#xe600;</i>沿途</button>
         <button class="search-button" type="button" @click="timeCost()"> <i class="iconfont">&#xe74f;</i>时长</button>
       </div>
-      <br>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:100px; width:80%; background-color: white;border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
           <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe602;</i>&nbsp;线路运行方向：<br><br>&nbsp;{{ this.busWholeName }}</div></div>
         </el-scrollbar>
       </div>
-      <div style="height:300px; width:80%; background-color: white">
-<!--        <el-scrollbar style="height:100%; width: 100%">-->
-
-<!--          <ul class="result-ul">-->
-<!--            <li v-for="(item,index) in alongStationsBetweenTwoStations" :key="index" class="result-li">-->
-<!--              <StationItem242 :index="index" :stationInfo="item" class="route-item"></StationItem242>-->
-<!--            </li>-->
-<!--          </ul>-->
-
-
-<!--        </el-scrollbar>-->
+      <div style="height:600px; width:80%; background-color: white;border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
           <el-card class="box-card">
             <div slot="header">
@@ -64,7 +53,7 @@
           </el-card>
         </el-scrollbar>
       </div>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:100px; width:80%; background-color: white;border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
 
           <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe74f;</i>&nbsp;运行时长：<br><br>&nbsp;{{ this.timeConsume }}</div></div>
@@ -200,6 +189,8 @@ ul {
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position:relative;
+  opacity: 0.97;
 }
 
 .solve-title {

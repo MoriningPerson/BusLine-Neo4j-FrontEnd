@@ -28,11 +28,6 @@
       <div style="height:300px; width:80% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
-          <!--        <ul class="result-ul">-->
-          <!--          <li v-for="(item,index) in bestRouteInfo252" :key="index" class="result-li">-->
-          <!--            <StationItem252 :index="index" :bestRoute252Info="item" class="route-item"></StationItem252>-->
-          <!--          </li>-->
-          <!--        </ul>-->
           <el-table :data="bestRouteInfo251">
             <el-table-column align= "center" label="路径长度" prop="pathLen"></el-table-column>
           </el-table>
@@ -604,7 +599,7 @@ export default {
     },
     // 2.5.2
     handleSelect252_1(val) {
-      this.stationName252_1=val.value;
+      this.stationName252_1 = val.value;
     },
     handleSelect252_2(val) {
       this.stationName252_2 = val.value;
@@ -830,6 +825,8 @@ ul {
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position: relative;
+  opacity: 0.97;
 }
 
 .solve-title {

@@ -35,6 +35,7 @@
       </div>
     </div>
 
+
   </div>
 </template>
 
@@ -117,7 +118,7 @@ ul {
   font-family: 黑体;
   font-size: 16px;
   font-weight: bold;
-  color: #CC9999;
+  color: #004370;
   alignment: center;
   text-align: start;
   display: flex;
@@ -128,7 +129,7 @@ ul {
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #CC9999;
+  color: #004370;
   alignment: left;
   text-align: start;
 }
@@ -137,16 +138,20 @@ ul {
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #FEF4F4;
+  /*background-color: #FEF4F4;*/
+  background-color: #FEDB8F;
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position: relative;
+  opacity: 0.97;
 
 }
 
 .solve-title {
   text-align: left;
-  color: #CC9999;
+  /*color: #CC9999;*/
+  color: #004370;
   font-size: 17px;
 }
 
@@ -163,8 +168,8 @@ input {
 }
 
 .set-routeName-default-input {
-  color: #CC9999;
-  width: 100%;
+  color: #004370;
+  width: 50%;
   padding: 10px;
   margin-top: 5px;
   display: flex;
@@ -175,7 +180,8 @@ input {
 
 .search-button {
   color: white;
-  background-color: #FFCCCC;
+  /*background-color: #FFCCCC;*/
+  background-color: #FFB000;
   border-color: white;
   border-radius: 5px;
   font-size: 16px;
@@ -205,6 +211,6 @@ input {
   margin-left: 30px;
   margin-top:30px;
   alignment: center;
-  background-color: #FEF4F4;
+  background-color: #F26849;
 }
 </style>

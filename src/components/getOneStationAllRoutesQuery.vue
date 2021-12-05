@@ -21,7 +21,7 @@
         <button class="search-button" type="button" @click="getOneStationAllRoute()"> <i class="iconfont">&#xe638;</i>
         </button>
       </div>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:320px; width:80%; background-color: white; border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
 
           <ul class="result-ul">
@@ -116,6 +116,8 @@ ul {
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position: relative;
+  opacity: 0.97;
 }
 
 .solve-title {

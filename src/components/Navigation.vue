@@ -22,12 +22,8 @@
         </div>
 
       </div>
-
       <div class="nav-div" @click="analysisUnfold()">
         <p :class='{nav_title: !analysis_unfold,nav_title_click: analysis_unfold}'>线路查询</p>
-<!--        <div v-if="analysis_unfold" class="nav-next" @click="stationAnalyze()">-->
-<!--          <p :class='{nav_p: !station_analysis_click,nav_p_click: station_analysis_click}'>统计站点信息</p>-->
-<!--        </div>-->
         <div v-if="analysis_unfold" class="nav-next" @click="routeAnalyze()">
           <p :class='{nav_p: !route_analysis_click,nav_p_click: route_analysis_click}'>统计线路信息</p>
         </div>
@@ -35,7 +31,6 @@
           <p :class='{nav_p: !route_change_click,nav_p_click: route_change_click}'>更改线路信息</p>
         </div>
       </div>
-
       <div class="nav-div" @click="runsUnfold()">
         <p :class='{nav_title: !runs_unfold,nav_title_click: runs_unfold}'>班次查询</p>
         <div v-if="runs_unfold" class="nav-next" @click="runsAnalyze()">
@@ -53,6 +48,7 @@ export default {
   name: "Navigation",
   data() {
     return {
+      //站点查询
       station_unfold: false,
       station_query_click: false,
       oneRouteAllStation_query_click: false, //2.1
@@ -62,12 +58,7 @@ export default {
       ifDirect_query_click: false, //2.6
       // 分析查询
       analysis_unfold: false,
-      station_analysis_click: false,
       route_analysis_click: false,
-      // 前端实验
-      try_unfold: false,
-      tryV_click: false,
-      dropDown_click: false,
       // 线路更改
       route_change_click: false,
       //班次查询
@@ -82,21 +73,25 @@ export default {
     stationUnfold() {
       this.station_unfold = true;
       // 关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
-      this.station_analysis_click = false;
+
       //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
     },
     // 2.1
     oneRouteStationQuery() {
       this.oneRouteAllStation_query_click = true;
-      // 关闭“分析查询”的两个子菜单
+      // 关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
-      this.station_analysis_click = false;
+
       //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
       // 关闭 “站点查询”的其他子菜单
       this.oneStationAllRoute_query_click = false;
       this.alongStation_query_click = false;
@@ -110,12 +105,14 @@ export default {
     // 2.3
     oneStationAllRouteQuery() {
       this.oneStationAllRoute_query_click = true;
-      // 关闭“分析查询”的两个子菜单
+      // 关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
-      this.station_analysis_click = false;
+
       //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.alongStation_query_click = false;
@@ -129,12 +126,13 @@ export default {
     //2.4
     alongStationQuery() {
       this.alongStation_query_click = true;
-      // 关闭“分析查询”的两个子菜单
+      // 关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
-      this.station_analysis_click = false;
       //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.oneStationAllRoute_query_click = false;
@@ -148,10 +146,15 @@ export default {
     // 2.5
     bestPlanQuery() {
       this.bestPlan_query_click = true;
-      // 关闭“分析查询”的两个子菜单
+      // 关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
-      this.station_analysis_click = false;
+
+      //关闭班次查询
+      this.route_runs_click = false;
+      this.runs_unfold=false;
+
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.oneStationAllRoute_query_click = false;
@@ -165,12 +168,14 @@ export default {
     // 2.6
     ifDirectQuery() {
       this.ifDirect_query_click = true;
-      // 关闭“分析查询”的两个子菜单
+      // 关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
-      this.station_analysis_click = false;
+
       //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
       // 关闭 “站点查询”的其他子菜单
       this.oneRouteAllStation_query_click = false;
       this.oneStationAllRoute_query_click = false;
@@ -184,22 +189,54 @@ export default {
     //
     analysisUnfold() {
       this.analysis_unfold = true;
+
+      //关闭站点查询
+      this.station_unfold = false;
+      this.oneRouteAllStation_query_click = false;
+      this.oneStationAllRoute_query_click = false;
+      this.alongStation_query_click = false;
+      this.bestPlan_query_click = false;
+      this.ifDirect_query_click = false;
+      //关闭 分析查询
+      this.route_analysis_click = false;
+      this.route_change_click = false;
+      //关闭班次查询
+      this.route_runs_click = false;
+      this.runs_unfold=false;
     },
     runsUnfold(){
       this.runs_unfold = true;
-    },
-    stationAnalyze() {
-      this.station_analysis_click = true;
+
+      //关闭站点查询
+      this.station_unfold = false;
+      this.oneRouteAllStation_query_click = false;
+      this.oneStationAllRoute_query_click = false;
+      this.alongStation_query_click = false;
+      this.bestPlan_query_click = false;
+      this.ifDirect_query_click = false;
+      //关闭 分析查询
+      this.analysis_unfold=false;
       this.route_analysis_click = false;
       this.route_change_click = false;
+      //关闭班次查询
       this.route_runs_click = false;
 
     },
     routeAnalyze() {
       this.route_analysis_click = true;
-      this.station_analysis_click = false;
+
+      //关闭站点查询
+      this.station_unfold = false;
+      this.oneRouteAllStation_query_click = false;
+      this.oneStationAllRoute_query_click = false;
+      this.alongStation_query_click = false;
+      this.bestPlan_query_click = false;
+      this.ifDirect_query_click = false;
+      //关闭 分析查询
       this.route_change_click = false;
+      //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
       this.$router.push({
         name: 'RouteAnalyze',
       })
@@ -207,9 +244,20 @@ export default {
     },
     runsAnalyze() {
       this.route_runs_click = true;
-      this.route_analysis_click = false;
-      this.station_analysis_click = false;
+      //关闭站点查询
+      this.station_unfold = false;
+      this.oneRouteAllStation_query_click = false;
+      this.oneStationAllRoute_query_click = false;
+      this.alongStation_query_click = false;
+      this.bestPlan_query_click = false;
+      this.ifDirect_query_click = false;
+      //关闭 分析查询
       this.route_change_click = false;
+      this.analysis_unfold = false;
+      this.route_analysis_click = false;
+
+      this.route_runs_click = false;
+
       this.$router.push({
         name: 'RunsAnalyze',
       })
@@ -217,9 +265,20 @@ export default {
     },
     routeChange() {
       this.route_change_click = true;
+
+      //关闭站点查询
+      this.station_unfold = false;
+      this.oneRouteAllStation_query_click = false;
+      this.oneStationAllRoute_query_click = false;
+      this.alongStation_query_click = false;
+      this.bestPlan_query_click = false;
+      this.ifDirect_query_click = false;
+      //关闭 分析查询
       this.route_analysis_click = false;
-      this.station_analysis_click = false;
+      //关闭班次查询
       this.route_runs_click = false;
+      this.runs_unfold=false;
+
       this.$router.push({
         name: 'RouteChange',
       })
@@ -230,15 +289,32 @@ export default {
 </script>
 
 <style scoped>
+.building{
+  background: url("~@/components/pic/bg.gif");
+  width:100%;
+  height: 100%;
+  position: fixed;
+  background-size: 100% 100%;
+  /*opacity: 0.5;*/
+  /*background-image: url("~@/components/pic/flower.gif");*/
+  background-color:black;
+  background-repeat:no-repeat;
+  background-attachment: local;
+  top:0px;
+}
 .nav-container {
   position: fixed;
+  /*background-color: #002D74;*/
   background-color: #002D74;
+  border-radius: 30px;
   text-align: center;
   width: 220px;
 }
 
 .center-nav {
+  /*background-color: #002D74;*/
   background-color: #002D74;
+  border-radius: 30px;
 
 }
 
@@ -246,6 +322,7 @@ export default {
   cursor: pointer;
   background-color: #002D74;
   padding: 6px;
+  border-radius: 30px;
 }
 
 .nav_title {
@@ -253,13 +330,16 @@ export default {
   color: white;
   font-size: 20px;
   letter-spacing: 7px;
+  border-radius: 30px;
 }
 
 .nav_title_click {
 
-  color: rgb(186, 201, 224);
+  /*color: rgb(186, 201, 224);*/
+  color:#D4EAF1;
   font-size: 20px;
   letter-spacing: 7px;
+  border-radius: 30px;
 }
 
 .nav_p {
@@ -267,18 +347,15 @@ export default {
   font-size: 15px;
   letter-spacing: 4px;
   margin-left: 20px;
+  border-radius: 30px;
 }
 
 .nav_p_click {
-  color: rgb(186, 201, 224);
+  /*color: rgb(186, 201, 224);*/
+  color:#D4EAF1;
   font-size: 15px;
   letter-spacing: 4px;
   margin-left: 20px;
-}
-.building{
-  width: 100%;
-  height: 100%;
-  background-size: 100% 100%;
-  background: url("~@/components/pic/bg.jpg");
+  border-radius: 30px;
 }
 </style>

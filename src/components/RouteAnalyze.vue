@@ -503,10 +503,13 @@ ul {
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #DAE8F2;
+  background-color: #E1F3F2;
+  /*background-color: #00CFCB;*/
   margin-bottom: 30px;
   border-radius: 12px;
   width: 800px;
+  position: relative;
+  opacity: 0.97;
 
 }
 
@@ -541,8 +544,9 @@ input {
 
 .search-button {
   color: white;
-  background-color: #11468C;
-  border-color: white;
+  /*background-color: #11468C;*/
+  background-color: #00CFCB;
+  border-color: #00A49D;
   border-radius: 5px;
   font-size: 16px;
   font-family: 黑体;
@@ -570,6 +574,6 @@ input {
   margin-left: 30px;
   margin-top:30px;
   alignment: center;
-  background-color: #BFCEDC;
+  background-color: #00CFCB;
 }
 </style>
