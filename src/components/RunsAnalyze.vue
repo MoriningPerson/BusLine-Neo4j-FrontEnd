@@ -34,7 +34,106 @@
         </el-scrollbar>
       </div>
     </div>
+    <div id="solve3-2" class="solve">
+      <div class="solve-title">
+        <p class="solve-title-p">获得某个时刻某个站台某个时段内即将停靠的线路</p></div>
+      <el-row>
+        <el-col span="6">
+          <input v-model="stationId" class="set-routeName-default-input" placeholder="请填站台id" type="text">
+        </el-col>
+        <el-col span="6">
+          <input v-model="timeLimit" class="set-routeName-default-input" placeholder="请填时间范围" type="text">
+        </el-col>
+        <el-col span="6">
+          <el-time-select
+              v-model="startTime"
+              :picker-options="{
+              start: '06:00',
+              step: '00:01',
+              end: '24:00'
+            }"
+              placeholder="停靠时间">
+          </el-time-select>
+        </el-col>
+        <el-col span="6">
+          <button class="search-button" type="button" v-on:click="queryRouteRuns2()"> 查询</button>
+        </el-col>
+      </el-row>
 
+      <br>
+
+
+
+      <div style="height:300px; width:80% ; background-color: white">
+
+        <el-scrollbar style="height:100%; width: 100%">
+          <el-table :data="routeRunsResult2" border style="width: 100%">
+            <el-table-column label="序号" type="index" width="50"></el-table-column>
+            <el-table-column
+                key="index"
+                label="线路名"
+                prop="name"
+                align="center">
+            </el-table-column>
+            <el-table-column
+                key="index"
+                label="多久即将到达（min）"
+                prop="time"
+                align="center">
+            </el-table-column>
+          </el-table>
+        </el-scrollbar>
+      </div>
+    </div>
+    <div id="solve3-3" class="solve">
+      <div class="solve-title">
+        <p class="solve-title-p">获得某个时刻某个站台线路最近的3趟班次信息</p></div>
+      <el-row>
+        <el-col span="8">
+          <input v-model="stationId2" class="set-routeName-default-input" placeholder="请填站台id" type="text">
+        </el-col>
+        <el-col span="8">
+          <el-time-select
+              v-model="startTime2"
+              :picker-options="{
+              start: '06:00',
+              step: '00:01',
+              end: '24:00'
+            }"
+              placeholder="停靠时间">
+          </el-time-select>
+        </el-col>
+        <el-col span="8">
+          <button class="search-button" type="button" v-on:click="queryRouteRuns3()"> 查询</button>
+        </el-col>
+      </el-row>
+      <br>
+
+
+
+      <div style="height:300px; width:80% ; background-color: white">
+
+        <el-scrollbar style="height:100%; width: 100%">
+          <el-table :data="routeRunsResult3" border style="width: 100%">
+            <el-table-column label="序号" type="index" width="50"></el-table-column>
+            <el-table-column
+                key="index"
+                label="线路名"
+                prop="name"
+                align="center"
+                width="100">
+            </el-table-column>
+            <el-table-column
+                key="index"
+                :formatter="changeData"
+                label="多久即将到达(min)"
+                prop="time"
+                align="left">
+            </el-table-column>
+          </el-table>
+        </el-scrollbar>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -49,7 +148,14 @@ export default {
     return {
       routeName:'',
       routeRunsResult:[],
-      myTableHead:[]
+      routeRunsResult2:[],
+      routeRunsResult3:[],
+      myTableHead:[],
+      stationId:null,
+      stationId2:null,
+      startTime:null,
+      startTime2:null,
+      timeLimit:null,
     }
   },
 
@@ -60,6 +166,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res)
         console.log(res.data.result);
         // this.routeRunsResult = this.RunsData(res.data.result);
@@ -88,7 +205,66 @@ export default {
         Arr.push(item2.name);
       })
       return Arr;
-    }
+    },
+    queryRouteRuns2(){
+      this.$axios.get('http://localhost:8081/RunsEntry/findRouteByTimeAndStation?stationId='
+          +this.stationId+
+          '&start='+this.startTime+'&t='+this.timeLimit, {
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
+        console.log(res)
+        console.log(res.data.result);
+        this.routeRunsResult2 = res.data.result;
+
+      })
+
+    },
+    queryRouteRuns3(){
+      this.$axios.get('http://localhost:8081/RunsEntry/findRecentThreeRunsByTimeAndStation?stationId='
+          +this.stationId2+
+          '&start='+this.startTime2, {
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
+        console.log(res)
+        console.log(res.data.result);
+        this.routeRunsResult3 = res.data.result;
+      })
+
+    },
+    changeData(row) {
+      let Arr = []; //新建一个数组
+      row.time.forEach((item) => {
+        //对当前的数组进行遍历处理
+        Arr.push(item + ' min后即将到达， '); //给它们每一项加上分号和空格
+      });
+      return Arr; //将有分隔符的颜色数组返回
+    },
 
   }
 }

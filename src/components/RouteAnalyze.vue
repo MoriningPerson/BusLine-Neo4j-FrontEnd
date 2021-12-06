@@ -1,5 +1,43 @@
 <template>
   <div>
+
+    <div id="solve1" class="solve">
+      <div class="solve-title">
+        <p class="solve-title-p">查询某线路基本信息</p></div>
+      <div class="set-routeName">
+        <el-row>
+          <el-col span="12">
+            <input v-model="lineName2" class="set-routeName-default-input" placeholder="请填写线路名称" type="text">
+          </el-col>
+          <el-col span="12">
+            <button class="search-button" type="button" v-on:click="queryLineInfo()"><i class="iconfont">&#xe638;</i> 查询</button>
+          </el-col>
+        </el-row>
+        <br>
+      </div>
+      <div style="height:300px; width:80%; background-color: white">
+        <el-scrollbar style="height:100%; width: 100%">
+
+          <el-card class="box-card">
+            <div slot="header">
+              <div class="text-wrapper"><i class="iconfont">&#xe6e5;</i>
+                &nbsp;&nbsp;线路</div>
+            </div>
+            <el-descriptions  :data="lineInfo"  border>
+              <el-descriptions-item label="LineId">{{lineInfo.lineId}}</el-descriptions-item>
+              <el-descriptions-item label="名称">{{lineInfo.name}}</el-descriptions-item>
+              <el-descriptions-item label="耗时">{{lineInfo.oneWayTime}}</el-descriptions-item>
+              <el-descriptions-item label="类型">{{lineInfo.type}}</el-descriptions-item>
+              <el-descriptions-item label="方向">{{lineInfo.directional}}</el-descriptions-item>
+              <el-descriptions-item label="发车间隔">{{lineInfo.interval}}</el-descriptions-item>
+              <el-descriptions-item label="长度">{{lineInfo.kilometer}}</el-descriptions-item>
+              <el-descriptions-item label="线路">{{lineInfo.route}}</el-descriptions-item>
+            </el-descriptions>
+
+          </el-card>
+        </el-scrollbar>
+      </div>
+    </div>
     <div id="solve4-1" class="solve">
       <div class="solve-title">
         <p class="solve-title-p">统计停靠路线最多的站点（按照id统计）并排序，显示前15条。</p></div>
@@ -125,11 +163,6 @@
       <div style="height:300px; width:80%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-<!--          <ul class="result-ul">-->
-<!--            <li v-for="(item,index) in relatedRoutes" :key="index" class="result-li">-->
-<!--              <RouteItem1 :index="index" :routeInfo="item" class="route-item"></RouteItem1>-->
-<!--            </li>-->
-<!--          </ul>-->
           <el-card class="box-card">
             <div slot="header">
               <div class="text-wrapper"><i class="iconfont">&#xe6ab;</i>
@@ -161,12 +194,6 @@
       <br>
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
-
-<!--          <ul class="result-ul">-->
-<!--            <li v-for="(item,index) in relatedRoutes15max" :key="index" class="result-li">-->
-<!--              <RouteItem2 :index="index" :routeInfo="item" class="route-item"></RouteItem2>-->
-<!--            </li>-->
-<!--          </ul>-->
           <el-table :data="relatedRoutes15max" border style="width: 100%">
             <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
             <el-table-column align="center" label="线路名" prop="name"></el-table-column>
@@ -185,11 +212,6 @@
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-<!--          <ul class="result-ul">-->
-<!--            <li v-for="(item,index) in stationsWithMaxRoutesBetween" :key="index" class="result-li">-->
-<!--              <RouteItem3 :index="index" :routeInfo="item" class="route-item"></RouteItem3>-->
-<!--            </li>-->
-<!--          </ul>-->
           <el-table :data="stationsWithMaxRoutesBetween" border style="width: 100%">
             <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
             <el-table-column align="center" label="出发站" prop="m1.name"></el-table-column>
@@ -210,11 +232,6 @@
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
-<!--          <ul class="result-ul">-->
-<!--            <li v-for="(item,index) in routesWithMaxStations" :key="index" class="result-li">-->
-<!--              <RouteItem4 :index="index" :routeInfo="item" class="route-item"></RouteItem4>-->
-<!--            </li>-->
-<!--          </ul>-->
           <el-table :data="routesWithMaxStations" border style="width: 100%">
             <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
             <el-table-column align="center" label="线路名称" prop="s.name"></el-table-column>
@@ -233,12 +250,6 @@
       <br>
       <div style="height:300px; width:80% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
-
-<!--          <ul class="result-ul">-->
-<!--            <li v-for="(item,index) in routesWithMaxRunTime" :key="index" class="result-li">-->
-<!--              <RouteItem5 :index="index" :routeInfo="item" class="route-item"></RouteItem5>-->
-<!--            </li>-->
-<!--          </ul>-->
           <el-table :data="routesWithMaxRunTime" border style="width: 100%">
             <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
             <el-table-column align="center" label="线路名称" prop="routeName"></el-table-column>
@@ -276,20 +287,9 @@
 </template>
 
 <script>
-//import RouteItem1 from "@/components/RouteItem4-5";
-//import RouteItem2 from "@/components/RouteItem4-6";
-//import RouteItem3 from "@/components/RouteItem4-7";
-//import RouteItem4 from "@/components/RouteItem4-8";
-//import RouteItem5 from "@/components/RouteItem4-9";
-
 export default {
   name: "RouteAnalyze",
   components: {
-    //RouteItem1,
-    //RouteItem2,
-    //RouteItem3,
-    //RouteItem4,
-    //RouteItem5,
   },
   data() {
     return {
@@ -308,7 +308,18 @@ export default {
       routeName4: "",
       nonrepeatingResult: null,
       lineName: "",
-      getOneWayStationResult: null
+      getOneWayStationResult: null,
+      lineName2:"",
+      lineInfo:{
+        directional:'',
+        interval: '',
+        kilometer: null,
+        lineId: null,
+        name: null,
+        oneWayTime: null,
+        route: null,
+        type:null,
+      },
     }
   },
 
@@ -319,6 +330,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res.data.result);
         this.relatedStation15max = res.data.result;
 
@@ -330,6 +352,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res.data.result);
         this.stationNum = res.data.result;
 
@@ -341,6 +374,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res.data.result);
         this.lineType = res.data.result;
 
@@ -353,6 +397,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result[0].num);
         this.stationInfo = res.data.result[1].stationList;
@@ -440,6 +495,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data);
         //可以在这里加一个函数，去把数据变成需要的样子
@@ -455,6 +521,40 @@ export default {
       });
       return Arr; //将有分隔符的颜色数组返回
     },
+    queryLineInfo(){
+      console.log(this.lineName)
+      this.$axios.get('http://localhost:8081/LineEntry/getLineBasicInfoByName?name=' + this.lineName2, {
+        headers: {   //设置上传请求头
+          'Content-Type': 'application/json',
+        },
+      }).then((res) => {
+        console.log(res);
+        console.log(res.data);
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
+
+        this.lineInfo.lineId=res.data.result.lineId;
+        this.lineInfo.directional=res.data.result.directional;
+        this.lineInfo.name=res.data.result.name;
+        this.lineInfo.type=res.data.result.type;
+        this.lineInfo.interval=res.data.result.interval;
+        this.lineInfo.oneWayTime = res.data.result.oneWayTime;
+        this.lineInfo.route=res.data.result.route;
+        this.lineInfo.kilometer=res.data.result.kilometer;
+
+
+      })
+
+    }
   }
 }
 </script>
