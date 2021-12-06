@@ -15,7 +15,7 @@
         </el-row>
         <br>
       </div>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:300px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
           <el-card class="box-card">
@@ -64,7 +64,7 @@
         <button class="search-button" type="button" v-on:click="getStationTypeNum()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="stationNum" border style="width: 100%">
@@ -87,7 +87,7 @@
         </el-col>
       </el-row>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="getOneWayStationResult" border style="width: 100%">
@@ -104,7 +104,7 @@
         <button class="search-button" type="button" v-on:click="getLineTypeNum()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="lineType" border style="width: 100%">
@@ -133,7 +133,7 @@
         <br>
 
       </div>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="stationInfo" border style="width: 100%">
@@ -160,7 +160,7 @@
         </el-row>
         <br>
       </div>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:300px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
           <el-card class="box-card">
@@ -192,7 +192,7 @@
         <button class="search-button" type="button" v-on:click="queryRoutesRelated15max()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="relatedRoutes15max" border style="width: 100%">
             <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
@@ -209,7 +209,7 @@
         <button class="search-button" type="button" v-on:click="queryMaxRoutesBetween()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
           <el-table :data="stationsWithMaxRoutesBetween" border style="width: 100%">
@@ -229,7 +229,7 @@
         <button class="search-button" type="button" v-on:click="queryRoutesWithMaxStations()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
           <el-table :data="routesWithMaxStations" border style="width: 100%">
@@ -248,7 +248,7 @@
         <button class="search-button" type="button" v-on:click="queryRoutesWithMaxRunTime()"><i class="iconfont">&#xe638;</i> 查询</button>
       </div>
       <br>
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="routesWithMaxRunTime" border style="width: 100%">
             <el-table-column align="center" label="序号" type="index" prop="index" width="50"></el-table-column>
@@ -275,7 +275,7 @@
         </el-row>
         <br>
       </div>
-      <div style="height:300px; width:80%; background-color: white">
+      <div style="height:300px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <div class="result"><span>{{ this.nonrepeatingResult }}</span></div>
 
@@ -588,6 +588,7 @@ ul {
   text-align: start;
   display: flex;
   align-items: start;
+
 }
 .title-wrapper {
   white-space: pre-wrap;
@@ -599,17 +600,20 @@ ul {
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
-  margin-right: 100px;
-  padding: 40px;
+  /*margin-left: 300px;*/
+  /*margin-right: 100px;*/
+  /*padding: 40px;*/
   /*background-color: rgba(240, 240, 240, 0.6);*/
   background-color: #E1F3F2;
   /*background-color: #00CFCB;*/
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
-  position: relative;
-  opacity: 0.97;
+  width: 535px;
+  position:relative;
+  opacity: 0.95;
+  margin-left: 301px;
+  margin-right: 100px;
+  padding: 40px;
 
 }
 

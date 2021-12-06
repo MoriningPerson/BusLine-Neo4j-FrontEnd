@@ -18,7 +18,7 @@
 
 
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="routeRunsResult" border style="width: 100%">
@@ -37,14 +37,11 @@
     <div id="solve3-2" class="solve">
       <div class="solve-title">
         <p class="solve-title-p">获得某个时刻某个站台某个时段内即将停靠的线路</p></div>
-      <el-row>
-        <el-col span="6">
+      <el-row :gutter="20">
+        <el-col span="12">
           <input v-model="stationId" class="set-routeName-default-input" placeholder="请填站台id" type="text">
         </el-col>
-        <el-col span="6">
-          <input v-model="timeLimit" class="set-routeName-default-input" placeholder="请填时间范围" type="text">
-        </el-col>
-        <el-col span="6">
+        <el-col span="12">
           <el-time-select
               v-model="startTime"
               :picker-options="{
@@ -55,16 +52,18 @@
               placeholder="停靠时间">
           </el-time-select>
         </el-col>
-        <el-col span="6">
+      </el-row>
+      <el-row :gutter="20">
+
+        <el-col span="12">
+          <input v-model="timeLimit" class="set-routeName-default-input" placeholder="请填时间范围" type="text">
+        </el-col>
+        <el-col  span="12">
           <button class="search-button" type="button" v-on:click="queryRouteRuns2()"> 查询</button>
         </el-col>
       </el-row>
-
       <br>
-
-
-
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="routeRunsResult2" border style="width: 100%">
@@ -111,7 +110,7 @@
 
 
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="routeRunsResult3" border style="width: 100%">
@@ -310,17 +309,20 @@ ul {
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
-  margin-right: 100px;
-  padding: 40px;
+  /*margin-left: 300px;*/
+  /*margin-right: 100px;*/
+  /*padding: 40px;*/
   /*background-color: rgba(240, 240, 240, 0.6);*/
   /*background-color: #FEF4F4;*/
   background-color: #FEDB8F;
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
-  position: relative;
-  opacity: 0.97;
+  width: 535px;
+  position:relative;
+  opacity: 0.95;
+  margin-left: 301px;
+  margin-right: 100px;
+  padding: 40px;
 
 }
 

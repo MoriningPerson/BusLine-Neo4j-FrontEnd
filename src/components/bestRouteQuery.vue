@@ -25,11 +25,11 @@
         <button class="search-button" type="button" @click="bestPlanQuery251()"><i class="iconfont">&#xe638;</i></button>
       </div>
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <el-table :data="bestRouteInfo251">
-            <el-table-column align= "center" label="路径长度" prop="pathLen"></el-table-column>
+            <el-table-column align= "center" label="路径长度" prop="pathLen" class="ans-wrapper"></el-table-column>
           </el-table>
           <br><br>
 
@@ -43,7 +43,7 @@
               <!--          <el-timeline-item v-for="(item,index) of bestRouteInfo252" :key="index" :icon='el-icon-more'>-->
               <el-timeline-item v-for="(item,index) of p1" :key="index" :color="item.color" :icon="placeIcon">
                 <!--              <el-timeline-item v-for="(item,index) of p" :key="index" :color="item.color" :timestamp=item.id placement="bottom"  :icon="placeIcon">-->
-                <el-card class="text-wrapper">
+                <el-card class="ans-wrapper">
                   <span>{{item.name}}</span>
                 </el-card >
               </el-timeline-item>
@@ -81,7 +81,7 @@
         </button>
       </div>
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
@@ -104,7 +104,7 @@
               <!--          <el-timeline-item v-for="(item,index) of bestRouteInfo252" :key="index" :icon='el-icon-more'>-->
               <el-timeline-item v-for="(item,index) of p2" :key="index" :color="item.color" :icon="placeIcon">
 <!--              <el-timeline-item v-for="(item,index) of p" :key="index" :color="item.color" :timestamp=item.id placement="bottom"  :icon="placeIcon">-->
-                <el-card class="text-wrapper">
+                <el-card class="ans-wrapper">
                   <span>{{item.name}}</span>
                 </el-card >
               </el-timeline-item>
@@ -140,7 +140,7 @@
         <button class="search-button" type="button" @click="bestPlanQuery253()"><i class="iconfont">&#xe638;</i></button>
       </div>
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
@@ -163,7 +163,7 @@
               <!--          <el-timeline-item v-for="(item,index) of bestRouteInfo252" :key="index" :icon='el-icon-more'>-->
 <!--              <el-timeline-item v-for="(item,index) of p" :key="index" :color="item.color" :icon="placeIcon">-->
                               <el-timeline-item v-for="(item,index) of p3" :key="index" :color="item.color" :timestamp=item.route placement="bottom"  :icon="placeIcon">
-                <el-card class="text-wrapper">
+                <el-card class="ans-wrapper">
                   <span>{{item.name}}</span>
                 </el-card >
               </el-timeline-item>
@@ -202,7 +202,7 @@
         </button>
       </div>
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
@@ -223,7 +223,7 @@
             </div>
             <el-timeline  align="middle">
               <el-timeline-item v-for="(item,index) of p4" :key="index" :color="item.color" :timestamp=item.route placement="bottom"  :icon="placeIcon">
-                <el-card class="text-wrapper">
+                <el-card class="ans-wrapper">
                   <span>{{item.name}}</span>
                 </el-card >
               </el-timeline-item>
@@ -259,7 +259,7 @@
         <button class="search-button" type="button" @click="bestPlanQuery255()"><i class="iconfont">&#xe638;</i></button>
       </div>
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
@@ -280,7 +280,7 @@
             </div>
             <el-timeline  align="middle">
               <el-timeline-item v-for="(item,index) of p5" :key="index" :color="item.color" :timestamp=item.route placement="bottom"  :icon="placeIcon">
-                <el-card class="text-wrapper">
+                <el-card class="ans-wrapper">
                   <span>{{item.name}}</span>
                 </el-card >
               </el-timeline-item>
@@ -319,7 +319,7 @@
         </button>
       </div>
 
-      <div style="height:300px; width:80% ; background-color: white">
+      <div style="height:300px; width:100% ; background-color: white">
 
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
@@ -340,7 +340,7 @@
             </div>
             <el-timeline  align="middle">
               <el-timeline-item v-for="(item,index) of p6" :key="index" :color="item.color" :timestamp=item.route placement="bottom"  :icon="placeIcon">
-                <el-card class="text-wrapper">
+                <el-card class="ans-wrapper">
                   <span>{{item.name}}</span>
                 </el-card >
               </el-timeline-item>
@@ -792,7 +792,7 @@ export default {
         obj.id = index;
         obj.name = item;
         obj.icon = 'iconfont';
-        obj.color = '#FFF68F';
+        obj.color = '#b53908';
         Arr.push(obj)
       });
       console.log(Arr);
@@ -806,7 +806,7 @@ export default {
         var obj = {};
         obj.name = item1;
         obj.icon = 'iconfont';
-        obj.color = '#FFF68F';
+        obj.color = '#b53908';
         obj.route = relInfo[idx];
         idx++;
         Arr.push(obj)
@@ -869,30 +869,43 @@ ul {
   font-family: 黑体;
   font-size: 16px;
   font-weight: bold;
-  color: #a29988;
+  color: #f8dac3;
   alignment: center;
   text-align: start;
+  display: flex;
+  align-items: start;
+}
+.ans-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #b53908;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  align-items: start;
 }
 .title-wrapper {
   white-space: pre-wrap;
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #a29988;
+  color: #f8dac3;
   alignment: left;
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
+  margin-left: 301px;
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #ececea;
+  background-color:#b53908;/* #e86149;*/
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
-  position: relative;
-  opacity: 0.97;
+  width: 535px;
+  position:relative;
+  opacity: 0.85;
 }
 
 .solve-title {
@@ -923,12 +936,13 @@ input {
   width: 100%;
   padding: 5px;
   margin-top: 5px;
+  border-radius: 8px;
 }
 
 .search-button {
-  color: white;
-  background-color: #a29988;
-  border-color: white;
+  color: #f8dac3;
+  background-color: #b53908;
+  border-color: #f8dac3;
   border-radius: 5px;
   font-size: 16px;
   font-family: 黑体;
@@ -941,7 +955,6 @@ input {
   cursor: pointer;
   font-weight: bold;
 }
-
 .el-scrollbar__wrap {
   overflow-x: hidden;
 }
@@ -955,6 +968,6 @@ input {
   margin-right: 30px;
   margin-left: 30px;
   alignment: center;
-  background-color: #d3d4cc;
+  background-color:  #b53908;
 }
 </style>

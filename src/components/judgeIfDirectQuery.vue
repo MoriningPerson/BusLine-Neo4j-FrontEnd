@@ -30,7 +30,7 @@
       </el-row>
     </div>
 
-    <div style="height:300px; width:80% ; background-color: #f0ebe5;border-radius: 10px">
+    <div style="height:300px; width:100% ; background-color: #f0ebe5;border-radius: 10px">
       <el-card class="ans-wrapper" style="background-color: #a27e7e; border-radius: 8px;">
         <span><i class="iconfont">&#xe614;</i>&nbsp;&nbsp;{{ifDirect}}</span>
         <br><br>
@@ -216,7 +216,7 @@ ul {
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
+  margin-left: 304px;
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
@@ -226,7 +226,7 @@ ul {
   /*background-color: #333300;*/
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
+  width: 540px;
   position: relative;
   opacity: 0.97;
 }

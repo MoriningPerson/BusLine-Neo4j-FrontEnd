@@ -33,11 +33,11 @@ export default {
 .table-tip{
   font-family: Consolas;
   font-weight: bold;
-  color: #d3d4cc;
+  color: #a0dcce;
 }
 .item-container {
   display: flex;
-  background-color: #d3d4cc;
+  background-color: #a0dcce;
   margin-bottom: 5px;
   margin-top: 15px;
   margin-left: 5px;
@@ -52,7 +52,7 @@ export default {
   border: solid;
   font-family: 黑体;
   font-weight: bold;
-  color: #6b5152;
+  color: #11225d;
   text-align: left;
 }
 </style>

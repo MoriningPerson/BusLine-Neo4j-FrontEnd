@@ -21,7 +21,7 @@
         <button class="search-button" type="button" @click="getOneStationAllRoute()"> <i class="iconfont">&#xe638;</i>
         </button>
       </div>
-      <div style="height:320px; width:80%; background-color: white; border-radius: 10px;">
+      <div style="height:320px; width:100%; background-color: white; border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
 
           <ul class="result-ul">
@@ -105,7 +105,7 @@ ul {
   font-family: 黑体;
   font-size: 16px;
   font-weight: bold;
-  color: #a29988;
+  color: #062e24;
   alignment: center;
   text-align: start;
 }
@@ -114,21 +114,21 @@ ul {
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #a29988;
+  color: #062e24;
   alignment: left;
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
+  margin-left: 305px;
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #ececea;
+  background-color: #63bea8;/*#ececea;*/
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
+  width: 539px;
   position: relative;
-  opacity: 0.97;
+  opacity: 0.9;
 }
 
 .solve-title {
@@ -159,11 +159,12 @@ input {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  border-radius: 8px;
 }
 
 .search-button {
   color: white;
-  background-color: #a29988;
+  background-color: #062e24;
   border-color: white;
   border-radius: 5px;
   font-size: 16px;
@@ -190,6 +191,6 @@ input {
   margin-right: 30px;
   margin-left: 30px;
   alignment: center;
-  background-color: #d3d4cc;
+  background-color: #a0dcce;
 }
 </style>

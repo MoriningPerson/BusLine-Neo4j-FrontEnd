@@ -29,12 +29,12 @@
         <button class="search-button" type="button" @click="alongStationsBetween()"> <i class="iconfont">&#xe600;</i>沿途</button>
         <button class="search-button" type="button" @click="timeCost()"> <i class="iconfont">&#xe74f;</i>时长</button>
       </div>
-      <div style="height:100px; width:80%; background-color: white;border-radius: 10px;">
+      <div style="height:100px; width:100%; background-color: white;border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
-          <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe602;</i>&nbsp;线路运行方向：<br><br>&nbsp;{{ this.busWholeName }}</div></div>
+          <div class="result"><div class="ans-wrapper"><i class="iconfont">&#xe602;</i>&nbsp;线路运行方向：<br><br>&nbsp;{{ this.busWholeName }}</div></div>
         </el-scrollbar>
       </div>
-      <div style="height:600px; width:80%; background-color: white;border-radius: 10px;">
+      <div style="height:600px; width:100%; background-color: white;border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
           <el-card class="box-card">
             <div slot="header">
@@ -45,18 +45,18 @@
             <el-timeline  align="middle">
               <el-timeline-item v-for="(item,index) of alongStationsBetweenTwoStations" :key="index" :timestamp=item.stationId placement="top"  :icon="placeIcon">
                 <el-card class="text-wrapper">
-                  <span><i class="iconfont">&#xe61f;</i>&nbsp;&nbsp;{{item.name}}&nbsp;&nbsp;</span>
-                  <span>{{item.english}}</span>
+                  <div class="ans-wrapper"><span><i class="iconfont">&#xe61f;</i>&nbsp;&nbsp;{{item.name}}&nbsp;&nbsp;</span>
+                  <span>{{item.english}}</span></div>
                 </el-card >
               </el-timeline-item>
             </el-timeline>
           </el-card>
         </el-scrollbar>
       </div>
-      <div style="height:100px; width:80%; background-color: white;border-radius: 10px;">
+      <div style="height:100px; width:100%; background-color: white;border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
 
-          <div class="result"><div class="text-wrapper"><i class="iconfont">&#xe74f;</i>&nbsp;运行时长：<br><br>&nbsp;{{ this.timeConsume }}</div></div>
+          <div class="result"><div class="ans-wrapper"><i class="iconfont">&#xe74f;</i>&nbsp;运行时长：<br><br>&nbsp;{{ this.timeConsume }}</div></div>
 
         </el-scrollbar>
       </div>
@@ -198,7 +198,19 @@ ul {
   font-family: 黑体;
   font-size: 16px;
   font-weight: bold;
-  color: #a29988;
+  color: #f8dac3;
+  alignment: center;
+  text-align: start;
+  display: flex;
+  align-items: start;
+
+}
+.ans-wrapper {
+  white-space: pre-wrap;
+  font-family: 黑体;
+  font-size: 16px;
+  font-weight: bold;
+  color: #b53908;
   alignment: center;
   text-align: start;
   display: flex;
@@ -209,21 +221,21 @@ ul {
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #a29988;
+  color: #f8dac3;
   alignment: left;
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
+  margin-left: 301px;
   margin-right: 100px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #ececea;
+  background-color:#b53908;/* #e86149;*/
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
+  width: 535px;
   position:relative;
-  opacity: 0.97;
+  opacity: 0.85;
 }
 
 .solve-title {
@@ -253,12 +265,13 @@ input {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
+  border-radius: 8px;
 }
 
 .search-button {
-  color: white;
-  background-color: #a29988;
-  border-color: white;
+  color: #f8dac3;
+  background-color: #b53908;
+  border-color: #f8dac3;
   border-radius: 5px;
   font-size: 16px;
   font-family: 黑体;
@@ -286,6 +299,6 @@ input {
   margin-left: 30px;
   margin-top:30px;
   alignment: center;
-  background-color: #d3d4cc;
+  background-color: #b53908;
 }
 </style>

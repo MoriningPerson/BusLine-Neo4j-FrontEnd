@@ -139,7 +139,7 @@
         </el-form>
 
       </div>
-      <div style="height:100px; width:80%; background-color: white">
+      <div style="height:100px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
           <div class="result"><span>{{ this.addLineResult }}</span></div>
@@ -166,7 +166,7 @@
         </el-row>
 
       </div>
-      <div style="height:100px; width:80%; background-color: white">
+      <div style="height:100px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
 
           <div class="result"><span>{{ this.deleteLineResult }}</span></div>
@@ -191,7 +191,7 @@
         </div>
         <button class="search-button" type="button" v-on:click="changeLine()"> 更改</button>
       </div>
-      <div style="height:100px; width:80%; background-color: white">
+      <div style="height:100px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <div class="result"><span>{{ this.changeLineResultMsg }}</span></div>
           <el-table :data="changeLineResult" border style="width: 100%;height: 50px">
@@ -375,16 +375,19 @@ ul {
 }
 
 .solve {
-  margin-left: 300px;
-  margin-right: 100px;
-  padding: 40px;
+  /*margin-left: 300px;*/
+  /*margin-right: 100px;*/
+  /*padding: 40px;*/
   /*background-color: rgba(240, 240, 240, 0.6);*/
   background-color: #E1F3F2;
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
-  position: relative;
-  opacity: 0.97;
+  width: 535px;
+  position:relative;
+  opacity: 0.95;
+  margin-left: 301px;
+  margin-right: 100px;
+  padding: 40px;
 }
 
 .solve-title {

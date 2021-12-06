@@ -25,7 +25,7 @@
 
 
       </div>
-      <div style="height:800px; width:80%; background-color: white; border-radius: 10px;">
+      <div style="height:800px; width:100%; background-color: white; border-radius: 10px;">
         <el-scrollbar style="height:100%; width: 100%">
           <!--        <ul class="result-ul">-->
           <!--          <li v-for="(item,index) in bestRouteInfo252" :key="index" class="result-li">-->
@@ -40,10 +40,9 @@
             </div>
             <el-timeline  align="middle">
 
-              <el-timeline-item v-for="(item,index) of oneRouteAllStationInfo" :key="index" :timestamp="index+1" :icon="icon-jiaotong">
+              <el-timeline-item v-for="(item,index) of oneRouteAllStationInfo" :key="index" :timestamp="index+1">
                 <el-card >
-                  <span></span>
-                  <span> <div class="text-wrapper"><i class="iconfont">&#xe61f;</i>&nbsp;&nbsp;{{item.id}} {{item.name}}  --  {{item.english}}</div></span>
+                  <span> <div class="text-wrapper"><i class="iconfont">&#xe61f;</i>&nbsp;&nbsp;id: {{item.stationId}} {{item.name}}  --  {{item.english}}</div></span>
                 </el-card >
               </el-timeline-item>
             </el-timeline>
@@ -156,7 +155,7 @@ ul {
   font-family: 黑体;
   font-size: 16px;
   font-weight: bold;
-  color: #a29988;
+  color: #062e24;/*#a29988;*/
   alignment: center;
   text-align: start;
 }
@@ -165,21 +164,22 @@ ul {
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #a29988;
+  color: #062e24;/*#a29988;*/
   alignment: left;
   text-align: start;
 }
 .solve {
-  margin-left: 300px;
-  margin-right: 100px;
+  margin-left: 302px;
+  margin-right:  115px;
   padding: 40px;
   /*background-color: rgba(240, 240, 240, 0.6);*/
-  background-color: #ececea;
+  background-color: #63bea8;/*#ececea;*/
   margin-bottom: 30px;
   border-radius: 12px;
-  width: 800px;
+  width: 532px;
+
   position: relative;
-  opacity: 0.97;
+  opacity: 0.85;
 }
 
 .solve-title {
@@ -210,11 +210,12 @@ input {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  border-radius: 8px;
 }
 
 .search-button {
   color: white;
-  background-color: #a29988;
+  background-color: #0d1335;/*#a29988;*/
   border-color: white;
   border-radius: 5px;
   font-size: 16px;
@@ -243,7 +244,7 @@ input {
   margin-left: 30px;
   margin-top:30px;
   alignment: center;
-  background-color: #d3d4cc;
+  background-color: #a0dcce;
 }
 .icon-jiaotong:before {
   content: "\e612";
