@@ -101,6 +101,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result);
         this.busWholeName = res.data.result;
@@ -115,6 +126,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data);
         this.alongStationsBetweenTwoStations = res.data.result;
@@ -130,6 +152,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(this.busWholeName);
         console.log(res);
         console.log(res.data);

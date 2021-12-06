@@ -66,6 +66,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res.data.result);
         // this.oneStationAllRoutes = res.data.result.value.each(res.data.result.value,function(eachId,routesHasStationId){alert(eachId),alert(routesHasStationId)});
         this.oneStationAllRoutes = res.data.result;

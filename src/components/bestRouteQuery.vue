@@ -628,6 +628,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         // console.log(res.data.result);
         console.log(res.data.result);
         this.bestRouteInfo251 = res.data.result;
@@ -646,6 +657,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo252 = res.data.result;
@@ -663,6 +685,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo253 = res.data.result;
@@ -679,6 +712,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo254 = res.data.result;
@@ -695,6 +739,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo255 = res.data.result;
@@ -711,6 +766,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '查询失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo256 = res.data.result;

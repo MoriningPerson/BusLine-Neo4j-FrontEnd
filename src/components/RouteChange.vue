@@ -275,6 +275,17 @@ export default {
       this.$axios.post('http://localhost:8081/LineEntry/addNewRoute',
           param
       ).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '增加成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '增加失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data);
         this.addLineResult = res.data.msg;
@@ -294,6 +305,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '删除失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data);
         this.deleteLineResult = res.data.msg;
@@ -309,6 +331,17 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
+        if(res.data.code===200){
+          this.$message({
+            message: '更改成功',
+            type: 'success'
+          });
+        }else if(res.data.code!==200){
+          this.$message({
+            message: '更改失败,请确认输入' + res.data.msg,
+            type: 'warning'
+          });
+        }
         console.log(res);
         console.log(res.data);
         this.changeLineResult = res.data.result;
