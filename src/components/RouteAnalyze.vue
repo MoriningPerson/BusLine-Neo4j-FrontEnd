@@ -29,9 +29,11 @@
               <el-descriptions-item label="耗时">{{lineInfo.oneWayTime}}</el-descriptions-item>
               <el-descriptions-item label="类型">{{lineInfo.type}}</el-descriptions-item>
               <el-descriptions-item label="方向">{{lineInfo.directional}}</el-descriptions-item>
+              <el-descriptions-item label="营业时间">{{lineInfo.runTime}}</el-descriptions-item>
               <el-descriptions-item label="发车间隔">{{lineInfo.interval}}</el-descriptions-item>
               <el-descriptions-item label="长度">{{lineInfo.kilometer}}</el-descriptions-item>
               <el-descriptions-item label="线路">{{lineInfo.route}}</el-descriptions-item>
+
             </el-descriptions>
 
           </el-card>
@@ -319,6 +321,7 @@ export default {
         oneWayTime: null,
         route: null,
         type:null,
+        runTime:null
       },
     }
   },
@@ -541,7 +544,7 @@ export default {
             type: 'warning'
           });
         }
-
+       console.log(res.data.result);
         this.lineInfo.lineId=res.data.result.lineId;
         this.lineInfo.directional=res.data.result.directional;
         this.lineInfo.name=res.data.result.name;
@@ -550,6 +553,7 @@ export default {
         this.lineInfo.oneWayTime = res.data.result.oneWayTime;
         this.lineInfo.route=res.data.result.route;
         this.lineInfo.kilometer=res.data.result.kilometer;
+        this.lineInfo.runTime = res.data.result.runTime;
 
 
       })

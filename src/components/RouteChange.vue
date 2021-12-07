@@ -116,6 +116,15 @@
                 >
                   <el-input v-model="item.stationId" placeholder="请输入stationNum"/>
                 </el-form-item>
+                <el-col>
+                  <el-form-item
+                      :rules="[{ required: true, message: '参数名不能为空',trigger: 'change'},{max: 3, message: '不超过3个字符', trigger: 'change'}]"
+                      label="时间间隔"
+                  >
+                  <el-input v-model="form.formData2.timeList[index]" placeholder="请输入站点间隔min"/>
+                  </el-form-item>
+                </el-col>
+
                 <el-button
                     v-if="form.formData2.stationList.length > 1"
                     size="medium"
@@ -125,6 +134,8 @@
                 </el-button>
               </el-col>
             </el-row>
+
+
             <el-row>
               <el-col :span="10">
                 <el-button size="medium" type="primary" color="#11468C"  @click="addRow">新增属性</el-button>
@@ -246,8 +257,9 @@ export default {
               english: "YongTongLu",
               stationId: 4132,
               // key: Date.now()
-            }
-          ]
+            },
+          ],
+          timeList:[],
         },
         consume: 15
       }
@@ -262,6 +274,8 @@ export default {
         stationId: 4132,
        // key: Date.now() // 更改前没有
       });
+      var time = 0;
+       this.form.formData2.timeList.push(time);
     },
     addLine() {
       this.form.line.stationNum = this.form.formData2.stationList.length;
@@ -270,8 +284,10 @@ export default {
         "line": this.form.line,
         "route": this.form.route,
         "stationList": this.form.formData2.stationList,
+        "timeList":this.form.formData2.timeList,
         "consume": this.form.consume
       }
+      console.log(param);
       this.$axios.post('http://localhost:8081/LineEntry/addNewRoute',
           param
       ).then((res) => {
@@ -297,6 +313,7 @@ export default {
       console.log(item)
       console.log(index)
       this.form.formData2.stationList.splice(index, 1);
+      this.form.formData2.timeList.splice(index,1);
     },
     deleteLine() {
       console.log(this.routeName)
