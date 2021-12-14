@@ -93,6 +93,26 @@ export default {
   },
 
   methods: {
+    resultMsg(res){
+      if(res.data.code===200){
+        if(res.data.result.length === 0){
+          this.$message({
+            message: '未查询到数据',
+          });
+        } else{
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }
+      }else if(res.data.code!==200){
+        this.$message({
+          message: '查询失败,请确认输入' + res.data.msg,
+          type: 'warning'
+        });
+      }
+
+    },
     // 2.4.1
     getBusDirection() {
       console.log(this.stationName241 + " " + this.stationName242 + " " + this.busPartialName)
@@ -101,17 +121,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data.result);
         this.busWholeName = res.data.result;
@@ -126,17 +136,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data);
         this.alongStationsBetweenTwoStations = res.data.result;
@@ -152,17 +152,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(this.busWholeName);
         console.log(res);
         console.log(res.data);

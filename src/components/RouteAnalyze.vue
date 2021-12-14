@@ -334,10 +334,16 @@ export default {
         },
       }).then((res) => {
         if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
+          if(res.data.result.length === 0){
+            this.$message({
+              message: '未查询到数据',
+            });
+          } else{
+            this.$message({
+              message: '查询成功',
+              type: 'success'
+            });
+          }
         }else if(res.data.code!==200){
           this.$message({
             message: '查询失败,请确认输入' + res.data.msg,
@@ -356,10 +362,16 @@ export default {
         },
       }).then((res) => {
         if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
+          if(res.data.result.length === 0){
+            this.$message({
+              message: '未查询到数据',
+            });
+          } else{
+            this.$message({
+              message: '查询成功',
+              type: 'success'
+            });
+          }
         }else if(res.data.code!==200){
           this.$message({
             message: '查询失败,请确认输入' + res.data.msg,
@@ -378,10 +390,16 @@ export default {
         },
       }).then((res) => {
         if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
+          if(res.data.result.length === 0){
+            this.$message({
+              message: '未查询到数据',
+            });
+          } else{
+            this.$message({
+              message: '查询成功',
+              type: 'success'
+            });
+          }
         }else if(res.data.code!==200){
           this.$message({
             message: '查询失败,请确认输入' + res.data.msg,
@@ -401,10 +419,16 @@ export default {
         },
       }).then((res) => {
         if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
+          if(res.data.result.length === 0){
+            this.$message({
+              message: '未查询到数据',
+            });
+          } else{
+            this.$message({
+              message: '查询成功',
+              type: 'success'
+            });
+          }
         }else if(res.data.code!==200){
           this.$message({
             message: '查询失败,请确认输入' + res.data.msg,
@@ -499,10 +523,16 @@ export default {
         },
       }).then((res) => {
         if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
+          if(res.data.result.length === 0){
+            this.$message({
+              message: '未查询到数据',
+            });
+          } else{
+            this.$message({
+              message: '查询成功',
+              type: 'success'
+            });
+          }
         }else if(res.data.code!==200){
           this.$message({
             message: '查询失败,请确认输入' + res.data.msg,
@@ -534,10 +564,16 @@ export default {
         console.log(res);
         console.log(res.data);
         if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
+          if(res.data.result.length === 0){
+            this.$message({
+              message: '未查询到数据',
+            });
+          } else{
+            this.$message({
+              message: '查询成功',
+              type: 'success'
+            });
+          }
         }else if(res.data.code!==200){
           this.$message({
             message: '查询失败,请确认输入' + res.data.msg,

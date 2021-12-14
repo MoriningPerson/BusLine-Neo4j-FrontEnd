@@ -459,6 +459,26 @@ export default {
   },
 
   methods: {
+    resultMsg(res){
+      if(res.data.code===200){
+        if(res.data.result.length === 0){
+          this.$message({
+            message: '未查询到数据',
+          });
+        } else{
+          this.$message({
+            message: '查询成功',
+            type: 'success'
+          });
+        }
+      }else if(res.data.code!==200){
+        this.$message({
+          message: '查询失败,请确认输入' + res.data.msg,
+          type: 'warning'
+        });
+      }
+
+    },
     // 2.5.2
     searchFullStationName252_1() {
       let _this = this
@@ -467,7 +487,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -485,7 +505,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -504,7 +524,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -522,7 +542,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -541,7 +561,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -559,7 +579,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -628,17 +648,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         // console.log(res.data.result);
         console.log(res.data.result);
         this.bestRouteInfo251 = res.data.result;
@@ -657,17 +667,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo252 = res.data.result;
@@ -685,17 +685,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo253 = res.data.result;
@@ -712,17 +702,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo254 = res.data.result;
@@ -739,17 +719,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo255 = res.data.result;
@@ -766,17 +736,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then((res) => {
-        if(res.data.code===200){
-          this.$message({
-            message: '查询成功',
-            type: 'success'
-          });
-        }else if(res.data.code!==200){
-          this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
-            type: 'warning'
-          });
-        }
+        this.resultMsg(res);
         console.log(res);
         console.log(res.data.result);
         this.bestRouteInfo256 = res.data.result;

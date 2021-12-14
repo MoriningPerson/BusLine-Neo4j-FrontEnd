@@ -93,7 +93,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code == 200) {
+        if (res.data.code === 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {

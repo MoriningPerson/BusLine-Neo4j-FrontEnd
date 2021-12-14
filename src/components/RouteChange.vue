@@ -207,7 +207,7 @@
       <div style="height:100px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
           <div class="result"><span>{{ this.changeLineResultMsg }}</span></div>
-          <el-table :data="changeLineResult" border style="width: 100%;height: 50px">
+          <el-table :data="changeLineResult" border style="width: 100%;">
             <el-table-column label="线路"  prop="routeName"></el-table-column>
             <el-table-column :formatter="stationData" label="站点"  prop="station"></el-table-column>
           </el-table>
@@ -236,36 +236,67 @@ export default {
       addLineResult: null,
       loading:false,
       infoState:"info",
+      // form: {
+      //   line: {
+      //     route: "金河客运站-花明公交站2",
+      //     directional: "true",
+      //     kilometer: 15,
+      //     name: "2",
+      //     lineId: 2,
+      //     interval: 5,
+      //     runTime: "6:00-23:59",
+      //     type: "干线",
+      //     oneWayTime: 52
+      //   },
+      //   route: {
+      //     name: "2路上行",
+      //     routeId: 2,
+      //     stationNum: 2,
+      //     line: 2
+      //   },
+      //   formData2: {
+      //     stationList: [
+      //       {
+      //         name: "永通路2",
+      //         english: "YongTongLu",
+      //         stationId: 4132,
+      //         // key: Date.now()
+      //       },
+      //     ],
+      //     timeList:[],
+      //   },
+      //   consume: 15
+      // }
       form: {
         line: {
-          route: "金河客运站-花明公交站2",
-          directional: "true",
-          kilometer: 15,
-          name: "2",
-          lineId: 2,
-          interval: 5,
-          runTime: "6:00-23:59",
-          type: "干线",
-          oneWayTime: 52
+          route: "",
+          directional: "",
+          kilometer: null,
+          name: "",
+          lineId: null,
+          interval: null,
+          runTime: " ",
+          type: " ",
+          oneWayTime: null,
         },
         route: {
-          name: "2路上行",
-          routeId: 2,
-          stationNum: 2,
-          line: 2
+          name: " ",
+          routeId: null,
+          stationNum: null,
+          line: null
         },
         formData2: {
           stationList: [
             {
-              name: "永通路2",
-              english: "YongTongLu",
-              stationId: 4132,
+              name: " ",
+              english: " ",
+              stationId: " ",
               // key: Date.now()
             },
           ],
           timeList:[],
         },
-        consume: 15
+        consume: null
       }
     }
   },
@@ -273,9 +304,12 @@ export default {
   methods: {
     addRow() {
       this.form.formData2.stationList.push({
-        name: "永通路2",
-        english: "YongTongLu",
-        stationId: 4132,
+        // name: "永通路2",
+        // english: "YongTongLu",
+        // stationId: 4132,
+        name: " ",
+        english: " ",
+        stationId: null,
        // key: Date.now() // 更改前没有
       });
       var time = 0;
@@ -369,6 +403,7 @@ export default {
         console.log(res.data);
         this.changeLineResult = res.data.result;
         this.changeLineResultMsg = res.data.msg;
+        console.log(this.changeLineResult);
 
       })
 
