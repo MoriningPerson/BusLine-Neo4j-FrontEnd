@@ -186,7 +186,7 @@ ul {
   font-weight: bold;
   /*color: #a29988;*/
   /*color:#CCCC99;*/
-  color: #a27e7e;
+  color: #0d4850;
   alignment: center;
   text-align: start;
 }
@@ -198,20 +198,21 @@ ul {
   /*color: #a29988;*/
   /*color:#CCCC33;*/
   /*color: #CCCC99;*/
-  color: #fdf9ee;
+  color: #0d4850;
   alignment: center;
   text-align: start;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   transition:all .5s;
+  margin-left: 15px;
 }
 .title-wrapper {
   white-space: pre-wrap;
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #a27e7e;
+  color: #0d4850;
   alignment: left;
   text-align: start;
 }
@@ -222,13 +223,13 @@ ul {
   /*background-color: rgba(240, 240, 240, 0.6);*/
   /*background-color: #ececea;*/
   /*background-color: #993366;*/
-  background-color: #dfd7d7;
+  background-color: #a2c4c9;
   /*background-color: #333300;*/
   margin-bottom: 30px;
   border-radius: 12px;
   width: 540px;
   position: relative;
-  opacity: 0.97;
+  opacity: 0.95;
 }
 
 .solve-title {
@@ -269,7 +270,7 @@ input {
 
 .search-button {
   /*color: white;*/
-  color: #6b5152;
+  color: #0d4850;
   /*background-color: #a29988;*/
   background-color: #f0ebe5;
   border-radius: 5px;
@@ -316,7 +317,7 @@ newTitle {
   font-family: 黑体;
   font-size: 20px;
   font-weight: bold;
-  color: #a27e7e;
+  color: #0d4850;
   alignment: left;
   text-align: center;
   border: 8px solid white;
@@ -333,7 +334,7 @@ newTitle:after {
   content: '';
   display: block;
   position: absolute;
-  background: #f779bf;
+  background: #ffff00;
   width: 50px;
   height: 125px;
   opacity: 20%;

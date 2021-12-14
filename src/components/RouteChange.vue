@@ -152,15 +152,17 @@
       </div>
       <div style="height:100px; width:100%; background-color: white">
         <el-scrollbar style="height:100%; width: 100%">
+          <el-result v-loading="loading" icon="infoState">
+            <div class="result" ><span>{{ this.addLineResult }}</span></div>
+          </el-result>
 
-          <div class="result"><span>{{ this.addLineResult }}</span></div>
 
 
         </el-scrollbar>
       </div>
     </div>
 
-    <div id="solve5-2" class="solve">
+    <div id="solve5-2" class="solve" >
       <div class="solve-title">
         <p class="solve-title-p">删除线路</p></div>
       <div class="set-line">
@@ -232,6 +234,8 @@ export default {
       changeLineResult: [],
       changeLineResultMsg:null,
       addLineResult: null,
+      loading:false,
+      infoState:"info",
       form: {
         line: {
           route: "金河客运站-花明公交站2",
@@ -279,7 +283,7 @@ export default {
     },
     addLine() {
       this.form.line.stationNum = this.form.formData2.stationList.length;
-
+      this.loading = true;
       let param = {
         "line": this.form.line,
         "route": this.form.route,
@@ -305,7 +309,7 @@ export default {
         console.log(res);
         console.log(res.data);
         this.addLineResult = res.data.msg;
-
+        this.loading = false;
       })
 
     },
@@ -323,11 +327,13 @@ export default {
         },
       }).then((res) => {
         if(res.data.code===200){
+          this.infoState="success"
           this.$message({
             message: '删除成功',
             type: 'success'
           });
         }else if(res.data.code!==200){
+          this.infoState="warning"
           this.$message({
             message: '删除失败,请确认输入' + res.data.msg,
             type: 'warning'

@@ -314,7 +314,7 @@ ul {
   /*padding: 40px;*/
   /*background-color: rgba(240, 240, 240, 0.6);*/
   /*background-color: #FEF4F4;*/
-  background-color: #FEDB8F;
+  background-color: #a2c4c9;/*#a2c4c9;*/
   margin-bottom: 30px;
   border-radius: 12px;
   width: 535px;
@@ -329,8 +329,9 @@ ul {
 .solve-title {
   text-align: left;
   /*color: #CC9999;*/
-  color: #004370;
+  color: #0d4850;
   font-size: 17px;
+  font-weight:bold;
 }
 
 .set-routeName {
@@ -353,14 +354,15 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
+  border-radius: 5px;
 }
 
 .search-button {
-  color: white;
+  color: #eaf2f3;
   /*background-color: #FFCCCC;*/
-  background-color: #FFB000;
-  border-color: white;
+  background-color: #0d4850;
+  border-color: #eaf2f3;
   border-radius: 5px;
   font-size: 16px;
   font-family: 黑体;
