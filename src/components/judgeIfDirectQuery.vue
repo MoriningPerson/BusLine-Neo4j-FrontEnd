@@ -1,17 +1,17 @@
 <template>
-<div style="background-image: url('~@/components/pic/bg.jpg')">
+  <!--<div style="background-image: url('@/components/pic/bg.jpg')">-->
   <div id="solve2-6" class="solve">
 
     <div class="solve-title">
-<!--      <p class="title-wrapper">判断直达</p>-->
-        <newTitle>判断直达</newTitle>
+      <!--      <p class="title-wrapper">判断直达</p>-->
+      <newTitle>判断直达</newTitle>
     </div>
     <div class="set-routeName">
       <br>
       <div class="text-wrapper">
         站点名称
       </div>
-      <el-row>
+      <el-row gutter="10">
         <el-col span="9">
           <el-autocomplete v-model="stationName261" :fetch-suggestions="querySearch261"
                            :trigger-on-focus="false" class="set-routeName-default-input" placeholder="请填写站点1的名称"
@@ -31,7 +31,7 @@
     </div>
 
     <div style="height:300px; width:100% ; background-color: #f0ebe5;border-radius: 10px">
-      <el-card class="ans-wrapper" style="background-color: #a27e7e; border-radius: 8px;">
+      <el-card class="ans-wrapper" style="background-color: #86abb0; border-radius: 8px;">
         <span><i class="iconfont">&#xe614;</i>&nbsp;&nbsp;{{ifDirect}}</span>
         <br><br>
         <span><i class="iconfont">&#xe6e5;</i>&nbsp;&nbsp;<div class="ans-wrapper"><br>直达线路为：</div><br>{{routeInfo}}&nbsp;&nbsp;</span>
@@ -39,7 +39,6 @@
 
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -86,7 +85,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code === 200) {
+        if (res.data.code == 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -104,7 +103,7 @@ export default {
           'Content-Type': 'application/json',
         },
       }).then(function (res) {
-        if (res.data.code === 200) {
+        if (res.data.code == 200) {
           console.log(res.data.result);
           // el-autocomplete元素 要求 数组内是对象 且有 value 属性
           for (var j = 0; j < res.data.result.length; j++) {
@@ -143,7 +142,7 @@ export default {
           });
         }else if(res.data.code!==200){
           this.$message({
-            message: '查询失败,请确认输入' + res.data.msg,
+            message: '查询不到直达路线,报告的信息为：   ' + res.data.msg,
             type: 'warning'
           });
         }
